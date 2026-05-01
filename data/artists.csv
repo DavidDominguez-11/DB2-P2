@@ -1,501 +1,501 @@
 artist_id,nombre,pais,genero_principal,activo,anios_activo
-1,Carmen Powell,Hong Kong,rock,False,9
-2,Joseph Zamora,Netherlands,pop,False,29
-3,Eugene Johnson,Slovenia,pop,False,23
-4,Amy Cook,Gambia,rock,False,11
-5,Cameron Martinez,Christmas Island,hiphop,True,16
-6,Amy Reilly,Latvia,rock,False,11
-7,Adam Anderson,Tajikistan,pop,False,9
-8,James Travis,Guinea,electronic,False,12
-9,Jacob Gomez,Sudan,hiphop,False,15
-10,Jacqueline Ware,Belize,jazz,False,7
-11,Andrea Miller,Solomon Islands,electronic,False,15
-12,Mr. Joseph Little,Luxembourg,latin,True,25
-13,Mark Jordan,Greenland,pop,False,19
-14,John Ramos Jr.,Palau,hiphop,False,14
-15,Kelly Richmond,Albania,pop,False,9
-16,Karina Melton,Antigua and Barbuda,pop,False,15
-17,Aaron Jones,South Georgia and the South Sandwich Islands,electronic,True,29
-18,Chad Burnett,Ireland,electronic,True,29
-19,Juan Smith,Kazakhstan,rock,True,8
-20,Sarah Ramos,Israel,electronic,False,12
-21,Alexandria White,South Georgia and the South Sandwich Islands,rock,False,15
-22,Christopher Watson,South Africa,hiphop,False,18
-23,Mr. Timothy Page,Saint Barthelemy,hiphop,True,28
-24,Bradley Powell,Cayman Islands,latin,True,9
-25,Christine Navarro DDS,Macao,pop,False,17
-26,Joshua Hunter,Korea,electronic,False,2
-27,Ricardo Arnold,Cote d'Ivoire,rock,False,14
-28,Jennifer Stewart,Georgia,jazz,True,7
-29,Cory Clay,Guam,pop,False,26
-30,Thomas Morris,Liechtenstein,jazz,False,18
-31,Christopher Davis,Reunion,latin,False,25
-32,Emily Mann,Malta,latin,True,16
-33,Jeffrey Hill,Palestinian Territory,hiphop,False,25
-34,Sheila Meadows,Armenia,electronic,True,21
-35,Amy Dillon,Singapore,rock,False,17
-36,Brenda Ingram,South Georgia and the South Sandwich Islands,latin,True,3
-37,Martha Williams,Andorra,electronic,True,7
-38,Christy Wade,Turkey,rock,True,23
-39,Whitney Anderson,South Georgia and the South Sandwich Islands,electronic,False,22
-40,David Garner,Guernsey,hiphop,True,9
-41,Stacey Gomez,Cote d'Ivoire,hiphop,True,23
-42,Marie Salazar,French Polynesia,jazz,True,9
-43,Kristina Patterson,El Salvador,jazz,False,21
-44,Mary Quinn,Australia,rock,True,2
-45,John Coleman,Nigeria,latin,True,14
-46,Matthew Bradley,United States of America,hiphop,False,28
-47,Joshua Keller,Gibraltar,electronic,True,21
-48,Shane Parsons,Ethiopia,latin,False,21
-49,Johnathan James,Palestinian Territory,latin,True,17
-50,Carrie Everett,Qatar,jazz,False,19
-51,Donald Roth,Saint Vincent and the Grenadines,electronic,False,27
-52,Sean Allen,Moldova,hiphop,True,25
-53,Andrew Johns,Nigeria,jazz,False,10
-54,Jessica Miller,Congo,jazz,True,7
-55,John Alvarez,South Africa,electronic,False,26
-56,Tammy Jenkins,Samoa,jazz,False,6
-57,David Jones,Holy See (Vatican City State),hiphop,False,18
-58,Abigail Mays,Azerbaijan,latin,False,23
-59,Rachel Turner,Latvia,rock,False,30
-60,Emily Miller,Myanmar,latin,True,28
-61,Carla Rodriguez,Guinea,hiphop,True,6
-62,Alexis Pittman,Western Sahara,pop,False,12
-63,Aaron Johnson,Iceland,latin,False,6
-64,Anthony Rodriguez Jr.,French Polynesia,electronic,False,3
-65,Sabrina Smith,Greece,jazz,True,25
-66,James Hall,Sudan,jazz,True,16
-67,Alan Wolfe,Taiwan,latin,False,9
-68,Melissa Rich,Falkland Islands (Malvinas),pop,True,25
-69,Ryan Taylor,Botswana,jazz,True,29
-70,Anna Brown,Japan,hiphop,False,4
-71,Gregory Anderson,Malaysia,hiphop,True,20
-72,Brittney Coleman,Somalia,pop,False,9
-73,Danielle Thompson,South Georgia and the South Sandwich Islands,electronic,False,10
-74,Holly Murphy,Tajikistan,hiphop,True,20
-75,Rachel Kirk,Egypt,pop,False,16
-76,Mary Johnson,Papua New Guinea,hiphop,False,16
-77,Curtis Howard,El Salvador,electronic,False,10
-78,Christie Wilson,France,rock,True,26
-79,Joshua Chapman,Afghanistan,hiphop,False,21
-80,Robert Phillips,United States Minor Outlying Islands,latin,True,21
-81,Tyler Mann,Spain,jazz,True,6
-82,Sean Dean,Netherlands Antilles,electronic,True,10
-83,Stephen Yu,Czech Republic,rock,True,19
-84,Gregory Palmer,Burkina Faso,jazz,True,3
-85,Brenda Owens,Samoa,pop,False,20
-86,Kenneth Rodriguez,Japan,rock,False,10
-87,Samantha Ruiz,Djibouti,hiphop,False,27
-88,Aaron Martinez,Madagascar,electronic,False,26
-89,Katie Duke,Kazakhstan,rock,True,29
-90,Leroy Hall,Vietnam,pop,True,8
-91,Brittany Sawyer,Niue,latin,False,9
-92,Peter Ruiz,Saint Helena,jazz,True,9
-93,Jeffrey Lowery,Slovenia,jazz,True,9
-94,Chelsey Black MD,Swaziland,rock,False,9
-95,Dennis Brooks,Senegal,electronic,True,13
-96,James Hogan,Austria,latin,True,28
-97,Nicole Henry,Rwanda,electronic,False,23
-98,Jacob Walker,Falkland Islands (Malvinas),jazz,True,1
-99,Robin Shaw,Seychelles,pop,True,18
-100,Tara Esparza DVM,Sri Lanka,rock,True,18
-101,James Lee,Ghana,rock,True,17
-102,Samantha Frost,Reunion,latin,True,15
-103,Thomas Johnson,Argentina,jazz,True,25
-104,Grace Kennedy,Congo,hiphop,False,19
-105,Brittany Hendrix,Mayotte,jazz,True,20
-106,Jessica Matthews,Korea,rock,False,22
-107,James Beck,Svalbard & Jan Mayen Islands,rock,False,17
-108,Jennifer Garner DDS,Kazakhstan,latin,False,14
-109,Kelly Taylor,Mauritius,jazz,True,25
-110,Jillian Bishop,Estonia,rock,True,19
-111,Bailey Silva,Slovakia (Slovak Republic),rock,True,29
-112,Terry Adams,Togo,pop,False,2
-113,Adriana Watkins,Greece,jazz,False,4
-114,Robin Ashley,American Samoa,latin,True,2
-115,Patrick Baker,Saint Pierre and Miquelon,jazz,True,27
-116,Jessica Wagner,Antigua and Barbuda,hiphop,True,26
-117,Jordan Holland,Belarus,electronic,True,21
-118,Pamela Lee PhD,Christmas Island,jazz,False,26
-119,Wanda Smith,Saint Kitts and Nevis,latin,True,24
-120,Dr. Eric Torres,Venezuela,jazz,False,29
-121,Jesse Weber,Bermuda,latin,True,22
-122,Danny Franklin,Sierra Leone,electronic,True,5
-123,Cindy Long,New Caledonia,jazz,False,27
-124,Adam Jones,Georgia,electronic,False,13
-125,Fernando Goodwin,French Polynesia,electronic,True,24
-126,Ashley Chapman,Haiti,rock,False,13
-127,Maria Howell,Comoros,pop,True,1
-128,Oscar Newton,New Caledonia,pop,False,18
-129,Keith Briggs,Finland,latin,False,11
-130,Katherine Lam,Cook Islands,pop,True,22
-131,Leon Jackson,Malaysia,hiphop,True,25
-132,Tracy Clark,British Indian Ocean Territory (Chagos Archipelago),pop,False,12
-133,Julie Gallagher,Vietnam,rock,True,13
-134,Robert Johnson,Gibraltar,hiphop,True,29
-135,David Stewart,Saint Pierre and Miquelon,hiphop,True,22
-136,Aimee Gibson,Tunisia,rock,True,14
-137,William Taylor,Equatorial Guinea,pop,True,22
-138,Kristen Davis,Brazil,jazz,False,2
-139,William Sharp,Angola,hiphop,False,18
-140,Alexander Kim,Guadeloupe,pop,False,16
-141,Rose Maldonado,Sierra Leone,latin,False,13
-142,Elizabeth Becker DDS,Bosnia and Herzegovina,hiphop,False,21
-143,Christopher Baker,Croatia,jazz,True,15
-144,Paul Paul,Jamaica,jazz,False,6
-145,Christina Brock,Mozambique,latin,True,23
-146,Kelsey Calderon,Malaysia,electronic,False,10
-147,Kimberly Schmidt,Latvia,jazz,False,12
-148,Linda Beck,Liechtenstein,electronic,False,8
-149,Wendy Gilbert DVM,South Africa,electronic,False,8
-150,Jonathan Colon,Slovenia,hiphop,True,13
-151,Haley Lee,Czech Republic,latin,False,22
-152,Justin Mills,Netherlands Antilles,pop,True,20
-153,Rebecca Larsen,Timor-Leste,latin,False,6
-154,Patricia Mitchell,Bahamas,hiphop,True,21
-155,Thomas Cabrera,Italy,hiphop,False,8
-156,Mr. Douglas Humphrey,Ecuador,pop,False,20
-157,Larry Rodriguez,Mayotte,jazz,False,14
-158,Jennifer Hall,Botswana,jazz,False,28
-159,Renee Hill,Tokelau,pop,False,15
-160,Stephanie Gomez MD,Cocos (Keeling) Islands,latin,True,10
-161,John Sanchez,Wallis and Futuna,latin,False,16
-162,Dr. Ashley Garcia,Norway,jazz,True,18
-163,John Gonzalez,British Virgin Islands,pop,True,28
-164,Melissa Blackwell,Anguilla,electronic,False,22
-165,Rachel Willis,Bangladesh,electronic,False,8
-166,Kelly Goodman,Benin,rock,True,17
-167,Caitlin Wagner,Bahrain,jazz,True,16
-168,Emily Briggs,Pitcairn Islands,pop,True,23
-169,Wayne Baker,Mali,pop,True,13
-170,Samuel Rodriguez,Myanmar,latin,False,12
-171,Tiffany Drake,Netherlands Antilles,latin,True,6
-172,Charles Rivera,Mayotte,jazz,False,22
-173,Kaitlin Henson,Angola,hiphop,True,14
-174,Brendan Morgan,Guernsey,jazz,True,7
-175,Sara Williams,Saudi Arabia,electronic,True,9
-176,Adam Pitts,El Salvador,latin,False,9
-177,Dr. Jennifer Steele MD,Korea,rock,True,2
-178,Monique Cuevas,Syrian Arab Republic,hiphop,False,17
-179,Nathan Gibson,Spain,jazz,False,16
-180,Evelyn Wright,Cyprus,pop,False,24
-181,Laura Perry,Thailand,pop,True,11
-182,Allison Schwartz,Faroe Islands,jazz,True,5
-183,Tanya Watson,Cuba,latin,True,5
-184,Andrew Ward,Turkmenistan,hiphop,False,8
-185,Rachel Garcia,Ecuador,jazz,True,3
-186,Ashley Taylor,Russian Federation,rock,True,7
-187,Mary Roberts,Benin,electronic,True,2
-188,Kathleen Brown,Norfolk Island,pop,False,3
-189,Jeffery Palmer,Nepal,electronic,True,25
-190,Jay Benton,Somalia,latin,True,1
-191,Scott White,Egypt,hiphop,False,7
-192,Yolanda Barrett,Nicaragua,hiphop,False,28
-193,Jennifer Foster,China,jazz,True,4
-194,Melissa Chen,Malawi,rock,False,5
-195,Blake Lane,Hungary,hiphop,True,18
-196,Brandi Chavez,Albania,hiphop,True,16
-197,Tina Krueger,Estonia,electronic,False,11
-198,Deanna Jackson,Turkmenistan,pop,True,5
-199,Cindy Lee,United Arab Emirates,rock,True,27
-200,Kristen Hurley,Saint Vincent and the Grenadines,rock,False,25
-201,Kevin Robinson,American Samoa,pop,False,14
-202,Caitlin Miller,Qatar,latin,True,28
-203,Tammy Gilbert,Antigua and Barbuda,jazz,False,3
-204,John Anderson,Kiribati,hiphop,False,2
-205,Kyle Christian,Equatorial Guinea,pop,True,10
-206,Miguel Knight,Moldova,pop,False,19
-207,Ashley Allen,Mongolia,jazz,False,10
-208,Matthew Mcdaniel,United States of America,electronic,True,5
-209,Katie Jones,Jordan,hiphop,True,13
-210,Carrie Maldonado,Vanuatu,electronic,True,7
-211,Brad Gomez,Norway,jazz,False,4
-212,Elizabeth Smith,Ireland,latin,True,23
-213,Jose Scott,Cook Islands,hiphop,False,21
-214,Marisa Yates,Sierra Leone,hiphop,False,22
-215,Samantha Weiss,Zimbabwe,hiphop,True,24
-216,Jeffrey Bright,Netherlands Antilles,electronic,False,30
-217,Brittany Shah,Uruguay,electronic,True,11
-218,Lauren Benjamin,Mali,hiphop,True,12
-219,Wesley Woods,Slovenia,electronic,True,29
-220,David Frost,Sweden,rock,True,5
-221,Paul Rhodes,Hong Kong,pop,False,28
-222,Andrea Jones,Mauritania,latin,False,30
-223,Joseph Morgan,Jersey,hiphop,True,23
-224,Katherine Santos,South Georgia and the South Sandwich Islands,hiphop,False,29
-225,Summer Morgan,Congo,rock,False,21
-226,Michelle Long,Taiwan,pop,False,29
-227,Jessica Johnson,American Samoa,latin,False,12
-228,Laura Mcintosh,Jamaica,electronic,True,29
-229,Lori Cain,Cameroon,hiphop,True,24
-230,Stephanie Cook,Russian Federation,electronic,False,12
-231,Mackenzie Santos,Indonesia,rock,True,26
-232,Ashley Garrett,Mozambique,electronic,False,6
-233,Bruce Henry,Italy,hiphop,True,15
-234,Heather Mendez,Armenia,rock,True,23
-235,Karen Hill,Rwanda,pop,False,19
-236,Meredith Santos,Belgium,jazz,True,9
-237,Brandon White,Antigua and Barbuda,latin,True,12
-238,Timothy Mitchell,Cote d'Ivoire,hiphop,True,1
-239,Anthony Smith,Brazil,latin,False,26
-240,Heidi Harrison,Bhutan,rock,True,21
-241,Kimberly Thomas,Belize,pop,False,7
-242,Jessica Rice,Afghanistan,jazz,False,1
-243,Charles Underwood,Eritrea,hiphop,True,29
-244,David Miller,Iran,rock,True,21
-245,Justin Chambers,Gibraltar,pop,False,11
-246,Jerome Fuentes,Liechtenstein,rock,False,25
-247,Robert Mitchell,Namibia,latin,True,2
-248,Alicia Curtis,Greece,hiphop,True,29
-249,Jeffrey Sosa,Congo,electronic,False,14
-250,Cory Mcdowell Jr.,El Salvador,rock,True,10
-251,Shawn Rowe,Russian Federation,hiphop,True,8
-252,Michelle Townsend,Cocos (Keeling) Islands,latin,False,21
-253,Robert Kerr,Korea,pop,True,30
-254,Madison Huang,Canada,rock,True,3
-255,Vanessa Juarez,French Guiana,latin,False,21
-256,Kevin Roberts,Cayman Islands,latin,True,4
-257,Steven Miller,Mauritius,latin,False,22
-258,Matthew Calderon,Chile,pop,False,25
-259,Robert Lee,Romania,hiphop,True,29
-260,Amber Perez,South Africa,jazz,True,12
-261,Brandon Young,Wallis and Futuna,hiphop,True,26
-262,Kristen Brown,Lao People's Democratic Republic,electronic,True,15
-263,Jennifer Downs,Jordan,jazz,True,1
-264,Katelyn Robinson,Argentina,rock,True,8
-265,Michael Anderson,Austria,hiphop,False,6
-266,Jason Smith,Australia,jazz,True,30
-267,Tyler Lewis,Saint Pierre and Miquelon,latin,True,30
-268,Amy Brown,Trinidad and Tobago,latin,True,12
-269,Marc Peterson,Nauru,jazz,False,22
-270,Justin Mcdowell,Romania,latin,True,12
-271,Debbie Glover,Dominica,electronic,False,19
-272,Ralph Richmond,Bhutan,latin,True,18
-273,Stephen Peck,South Africa,hiphop,False,3
-274,Matthew Hutchinson,Guernsey,latin,False,2
-275,Robert Mckenzie,Northern Mariana Islands,hiphop,False,16
-276,Julia Castro,Macao,hiphop,False,28
-277,Warren Lawrence,Palestinian Territory,latin,False,30
-278,Ms. Melissa Merritt DVM,Czech Republic,electronic,False,27
-279,Cheyenne Townsend,Saint Helena,rock,False,11
-280,Casey Kirk,Bouvet Island (Bouvetoya),pop,False,21
-281,Donald Mckinney,Burundi,pop,True,1
-282,Cameron Martinez,Kiribati,jazz,False,22
-283,Michelle Jackson,Ecuador,pop,True,16
-284,James Smith,Sao Tome and Principe,hiphop,False,18
-285,Christopher Thompson DDS,Denmark,jazz,False,15
-286,Micheal Martinez,Cook Islands,jazz,False,9
-287,David Alexander,Congo,pop,True,4
-288,Eric Buckley,Seychelles,rock,False,2
-289,Matthew Long,Lesotho,jazz,True,10
-290,John Miller,Philippines,hiphop,False,17
-291,Lauren Wilkinson DDS,Sweden,electronic,False,24
-292,Jonathan Little,Guinea,hiphop,False,12
-293,Amber Stephens,Barbados,latin,True,23
-294,Ebony Holland,Angola,latin,True,26
-295,Aaron Brown,Palau,latin,True,16
-296,Sara Moore,Saint Barthelemy,hiphop,True,17
-297,Gwendolyn Thomas,Bahamas,electronic,True,27
-298,Tracy Lee,Korea,electronic,True,7
-299,Theodore Meza,Libyan Arab Jamahiriya,electronic,False,12
-300,John White,Saint Lucia,latin,True,28
-301,Corey Garrison,Belarus,electronic,False,25
-302,Joseph Dominguez,Vanuatu,rock,False,6
-303,Karen Bowers,Mexico,jazz,True,20
-304,Kyle Castaneda,Martinique,latin,False,13
-305,Marc Carter,Qatar,rock,False,19
-306,Paula Good,Palau,pop,True,2
-307,Charles Bradford,Cameroon,pop,False,15
-308,Carlos Anderson,Rwanda,electronic,False,18
-309,Randy Powell,France,pop,False,9
-310,Tanya Whitehead,Montserrat,latin,False,5
-311,Nicole Smith,Zambia,latin,True,6
-312,Sarah Woods,Peru,rock,False,25
-313,Ethan Chapman,Cuba,latin,True,24
-314,Michael Nash,Brazil,hiphop,True,24
-315,Sharon Woods,Dominica,latin,True,17
-316,Dennis Lambert,Moldova,hiphop,False,3
-317,Jerry Clark,Monaco,jazz,True,11
-318,Vernon Charles,Kyrgyz Republic,electronic,True,9
-319,Michelle Martinez,Iraq,electronic,True,3
-320,Emily Allen,Honduras,pop,True,17
-321,James Munoz MD,Northern Mariana Islands,jazz,True,29
-322,Stephanie Le,Barbados,electronic,False,16
-323,Jennifer Bell,United States Virgin Islands,hiphop,True,10
-324,Tina Higgins,Russian Federation,hiphop,True,16
-325,Stacey Graham,Solomon Islands,electronic,False,17
-326,Jamie Simon,Equatorial Guinea,hiphop,False,13
-327,Mark Carlson,Bahamas,hiphop,False,27
-328,Kimberly Davies,Luxembourg,electronic,False,24
-329,Steve Gibson,Fiji,pop,False,9
-330,James Wilson,Liechtenstein,pop,True,19
-331,Holly Clark,Northern Mariana Islands,electronic,False,1
-332,Jeff Robinson,Guinea-Bissau,rock,True,30
-333,Kevin Lee,Bouvet Island (Bouvetoya),hiphop,False,2
-334,Tracy Thompson,Cambodia,latin,True,19
-335,Jeremy Simpson,Kiribati,jazz,True,25
-336,Audrey Erickson MD,Saudi Arabia,hiphop,False,6
-337,Julia Reyes,Guyana,rock,False,24
-338,Susan Mejia,Paraguay,electronic,True,1
-339,Lisa Clements,Fiji,jazz,False,17
-340,Carolyn Delgado,Turkey,jazz,True,27
-341,Andrew Johnson,Lithuania,jazz,True,17
-342,Brad Jacobs,Cocos (Keeling) Islands,rock,False,19
-343,Bradley Richards,Denmark,rock,False,14
-344,Shelby Chen,Guam,latin,False,4
-345,Brittany Jones,Reunion,pop,True,19
-346,Lindsey Jacobs,Kazakhstan,hiphop,False,20
-347,Courtney Cooper,Oman,hiphop,False,22
-348,Jeremy Johnson,Tokelau,electronic,False,21
-349,Craig Nunez,Sierra Leone,electronic,False,5
-350,Ashley Lee,Belgium,pop,True,22
-351,Nathan Williams,Martinique,rock,False,19
-352,Briana Giles,Guam,hiphop,True,27
-353,Luis Brooks,Svalbard & Jan Mayen Islands,jazz,False,17
-354,Kellie Johnson,Mongolia,latin,False,21
-355,Alyssa Herman,Holy See (Vatican City State),hiphop,False,4
-356,Denise Brown,Philippines,jazz,True,7
-357,Jimmy Bennett,Montserrat,latin,False,4
-358,Stephanie Anderson,Saudi Arabia,jazz,False,25
-359,Dominique Harris,Seychelles,hiphop,False,6
-360,Janet Fernandez,Turks and Caicos Islands,electronic,False,29
-361,James Garcia,Iraq,hiphop,True,11
-362,Gary Fitzgerald,Syrian Arab Republic,latin,False,17
-363,Christopher Richardson,Svalbard & Jan Mayen Islands,jazz,False,23
-364,Ashley Turner,Zimbabwe,hiphop,False,1
-365,Roy Shaffer,Falkland Islands (Malvinas),latin,False,29
-366,Jeffrey Fields,Andorra,hiphop,True,16
-367,Eric Stevens,Ireland,electronic,True,4
-368,Shannon Gibson,Mali,jazz,True,17
-369,Tina Calderon,Saint Barthelemy,rock,False,19
-370,Alejandro Bond,Malta,jazz,True,1
-371,Marco Montgomery,Moldova,latin,True,24
-372,Sandra Anthony,Guam,hiphop,True,8
-373,Megan Barber,Isle of Man,latin,False,2
-374,Rebecca Molina,Jordan,jazz,False,10
-375,Carol Lewis,Saint Lucia,hiphop,True,5
-376,Jeffrey Jones,Iceland,jazz,False,18
-377,Joshua Medina,Israel,jazz,False,30
-378,Mary Williams,Grenada,latin,True,25
-379,Christina Ballard,Sri Lanka,hiphop,False,14
-380,Anthony Smith,Australia,pop,True,10
-381,Heather Perez,Grenada,rock,True,17
-382,Robert Lynch,South Georgia and the South Sandwich Islands,pop,True,11
-383,Philip Jennings,Chile,pop,True,24
-384,Michael Harper,Brunei Darussalam,hiphop,True,3
-385,Angela Williams,Jersey,pop,False,7
-386,Stacey Silva,Djibouti,pop,False,19
-387,Derek Young,Papua New Guinea,latin,False,19
-388,Mary Martin,Kyrgyz Republic,jazz,False,19
-389,Karen Rogers MD,Congo,pop,False,7
-390,Kevin Fisher,Slovakia (Slovak Republic),latin,True,7
-391,Elizabeth Hernandez,Central African Republic,pop,False,5
-392,Dale James,Guyana,hiphop,True,1
-393,Brittney Fuller,Nauru,electronic,True,18
-394,Terry Morgan,Israel,electronic,False,11
-395,Jessica Roberts,United Kingdom,pop,False,14
-396,Sean Mccoy,Turks and Caicos Islands,hiphop,False,23
-397,Shawn Garcia,South Africa,hiphop,False,3
-398,Dennis Morrison,Greenland,jazz,True,30
-399,Victor Keith,Croatia,jazz,False,18
-400,Jennifer Holland,Sierra Leone,pop,False,1
-401,Heidi King,Latvia,jazz,True,21
-402,Mandy Ray,Sweden,latin,False,27
-403,Rodney Snyder,Martinique,rock,True,24
-404,Lisa Bailey,Angola,electronic,False,18
-405,Robert Erickson,Eritrea,rock,False,24
-406,Megan Hampton,Lithuania,latin,False,21
-407,Todd Clark,Samoa,hiphop,True,26
-408,Evelyn Smith,Peru,jazz,False,9
-409,John Keller,Comoros,pop,False,16
-410,Rebecca Smith,United Kingdom,rock,True,10
-411,Julie Frederick,Rwanda,pop,True,23
-412,Rebecca Miller,Reunion,jazz,True,16
-413,Tyler Allen,Slovakia (Slovak Republic),hiphop,False,9
-414,Kendra Jones,San Marino,pop,True,14
-415,Gary Buck,Northern Mariana Islands,electronic,True,15
-416,Ashley Harris,Cook Islands,rock,False,15
-417,Chelsea Hubbard,France,jazz,True,24
-418,Nicole Jordan,American Samoa,jazz,False,5
-419,Jennifer Donaldson,United States Virgin Islands,jazz,True,26
-420,Leah Liu,Tuvalu,latin,True,7
-421,Amy Ross,Mauritius,latin,False,8
-422,Angela Thomas,Mozambique,latin,False,30
-423,Valerie Butler,Norfolk Island,jazz,False,24
-424,Nancy Mccormick,Bahamas,jazz,False,30
-425,Jennifer Case,Denmark,hiphop,False,7
-426,Tonya Cook,Lao People's Democratic Republic,electronic,False,13
-427,Shane Lewis,Congo,electronic,True,12
-428,Darin Carroll,Italy,electronic,False,11
-429,Amy Melton,Mali,rock,True,6
-430,Rebecca Chen,Netherlands Antilles,jazz,False,13
-431,Patrick Young,United Kingdom,electronic,True,29
-432,Marissa Johnson DDS,Guyana,rock,False,29
-433,Marie Brown,Tuvalu,hiphop,True,17
-434,Jordan Maxwell,Kenya,electronic,False,12
-435,Norma Stevenson,India,pop,True,24
-436,Brian Chan,Russian Federation,pop,False,26
-437,Adam Reese,Jersey,hiphop,True,9
-438,Mary Bass,Guam,pop,False,12
-439,Maria Wilson,Ireland,jazz,True,10
-440,Jason Collins,United States Virgin Islands,electronic,False,5
-441,Brandy Simon,French Guiana,latin,True,29
-442,Nicole Valdez,Tanzania,hiphop,True,13
-443,Marcus Rodriguez,Thailand,electronic,True,17
-444,Lori Harris,North Macedonia,jazz,True,4
-445,Ryan Coleman,Jordan,hiphop,True,20
-446,Michael Goodman,Fiji,hiphop,False,18
-447,Brad Smith,Cote d'Ivoire,rock,False,24
-448,Alyssa Russell,Kyrgyz Republic,hiphop,True,22
-449,John Smith,New Zealand,jazz,True,8
-450,Allison Hanson,Denmark,pop,False,27
-451,Tara Terry,Saint Pierre and Miquelon,pop,True,29
-452,Eric Sullivan,Fiji,hiphop,True,18
-453,Maria Rodriguez,Papua New Guinea,pop,True,18
-454,Samantha Meza,Aruba,jazz,True,27
-455,Julie Thompson,Greece,hiphop,False,17
-456,Christopher Holt,Reunion,jazz,False,19
-457,Kayla Lara,Rwanda,jazz,True,30
-458,Kenneth Osborne,Sudan,hiphop,True,20
-459,Amanda Price,Togo,electronic,True,27
-460,Samuel Benson,Guadeloupe,rock,True,27
-461,Sophia Ayala,Faroe Islands,hiphop,True,17
-462,Richard Williams,Guatemala,rock,False,16
-463,Yvonne Jones,Switzerland,jazz,True,23
-464,James Munoz,Sweden,electronic,True,18
-465,Desiree Murray,Serbia,hiphop,False,11
-466,Samuel Harvey,Hungary,hiphop,True,11
-467,Thomas Brown,United Arab Emirates,rock,True,29
-468,Francis Sawyer,Cote d'Ivoire,electronic,True,3
-469,Anthony Burnett,Nicaragua,pop,True,17
-470,Ms. Jean Fleming,Turkey,pop,True,23
-471,Kimberly Perry,Wallis and Futuna,jazz,False,6
-472,Yvonne Collins,Gabon,hiphop,True,16
-473,Jerry Hartman,Barbados,jazz,True,16
-474,Stephanie Evans,Tokelau,electronic,False,8
-475,Donna Moore,Cambodia,hiphop,True,5
-476,Tyler Wells,Brazil,jazz,True,1
-477,Michael Wilson,Northern Mariana Islands,latin,True,3
-478,Angela Massey,Ghana,electronic,False,24
-479,Elizabeth Robinson,Belarus,electronic,False,29
-480,Frank Bailey,Chad,rock,True,29
-481,Michael Perez,French Guiana,hiphop,False,14
-482,Linda Webster,Kuwait,latin,False,19
-483,Kristen Clarke,Mozambique,electronic,False,29
-484,Joseph Ramos,Cuba,pop,True,6
-485,Karen Hayes,Yemen,electronic,False,5
-486,Diane Coleman,Dominican Republic,jazz,False,9
-487,Rebekah Gonzalez,Yemen,hiphop,True,2
-488,Lisa Mason,Djibouti,latin,False,18
-489,Kelly Scott,Maldives,pop,True,17
-490,Melissa Adams,Tajikistan,electronic,True,16
-491,Lisa Silva,Mali,electronic,False,9
-492,Kyle Johnston,Heard Island and McDonald Islands,rock,True,19
-493,Jay Mills,Serbia,jazz,False,1
-494,Mr. Jason Gould,Estonia,rock,True,10
-495,Melinda Beltran,Bolivia,jazz,False,15
-496,Jamie King,Hungary,jazz,False,27
-497,Robert Green,Wallis and Futuna,latin,False,26
-498,Jennifer Graham,Anguilla,electronic,True,14
-499,David Rasmussen,Vietnam,rock,False,5
-500,Beth Bennett,Kazakhstan,jazz,True,29
+1,Brian Johnson,Solomon Islands,rock,True,6
+2,Kimberly Mercado,Botswana,electronic,False,24
+3,Frederick Randolph,Antigua and Barbuda,rock,False,15
+4,Nicole Davenport,Tuvalu,pop,False,19
+5,Anthony Morris,Cocos (Keeling) Islands,jazz,False,11
+6,Christine Jacobs,Saint Helena,jazz,True,22
+7,Brandon Roberson,Haiti,rock,False,23
+8,Christine Hart,Pakistan,latin,False,26
+9,Aaron Rios,Spain,electronic,True,3
+10,Jessica Sanchez,Mali,electronic,False,9
+11,Shane Williams,Jordan,electronic,False,24
+12,Ethan Jacobs,Libyan Arab Jamahiriya,pop,False,18
+13,Patrick Webb,Macao,electronic,True,9
+14,Vanessa Lee,Hong Kong,pop,True,26
+15,Tracy Weeks,Kazakhstan,pop,True,13
+16,Tammy Logan,Morocco,pop,False,5
+17,Edward Allen,Greenland,electronic,True,20
+18,Jennifer Ferguson,Rwanda,electronic,False,22
+19,Michael Hill,Latvia,pop,True,2
+20,Joseph Garcia,Germany,rock,False,4
+21,Mrs. Pamela Parker MD,Nicaragua,jazz,True,8
+22,Lisa Palmer,Spain,latin,True,6
+23,Paul Fisher,Finland,electronic,True,29
+24,Cindy Jenkins,Isle of Man,electronic,False,21
+25,Tiffany Cook,British Virgin Islands,electronic,False,6
+26,Anthony Willis,Cuba,electronic,True,8
+27,Mr. Tony Long,Lesotho,electronic,True,9
+28,Rebecca Morrow,Germany,electronic,False,30
+29,Patricia Clark,Lebanon,electronic,True,12
+30,Timothy Todd,Ukraine,latin,True,27
+31,Mike Kelley,Norway,pop,True,22
+32,Leslie Olson,Zimbabwe,latin,False,30
+33,Robert Jones,Australia,electronic,True,23
+34,Brittany Johnson,Ireland,hiphop,False,4
+35,Robin Flynn,Antarctica (the territory South of 60 deg S),pop,False,7
+36,Laura Higgins,Chile,hiphop,False,29
+37,John Mcfarland,Italy,jazz,True,16
+38,Sandra Davis,Saint Pierre and Miquelon,hiphop,True,22
+39,Jessica Stone,Korea,rock,True,21
+40,Lisa Mercer,Tuvalu,latin,False,7
+41,Erika Valencia,Guyana,jazz,True,3
+42,David Moyer,French Guiana,electronic,True,7
+43,Tonya Martinez,Kuwait,pop,False,17
+44,Tammy Johnson,Bahamas,latin,True,8
+45,Christopher Ellis,Cape Verde,electronic,True,12
+46,Victoria Bailey,France,jazz,True,16
+47,Victor Jones,Tajikistan,pop,True,17
+48,Bruce Powell,Seychelles,pop,False,16
+49,Kristi Kelly,Guyana,hiphop,True,13
+50,Rachel Lopez,Sao Tome and Principe,latin,False,8
+51,Danielle Roberts,Vietnam,hiphop,False,7
+52,Kathleen Vincent,Liberia,hiphop,True,13
+53,Michael Gaines,Burundi,hiphop,True,25
+54,Albert Buckley,Cayman Islands,pop,True,8
+55,Jeffrey Nielsen,Mongolia,jazz,True,10
+56,Linda Walker,Gabon,rock,True,26
+57,Kathy Miller,Tajikistan,electronic,True,30
+58,Jessica Dickson,Latvia,rock,True,12
+59,Lawrence Higgins,Guyana,pop,True,9
+60,Tara Petersen DDS,Argentina,pop,False,16
+61,Toni Santos,Grenada,jazz,False,13
+62,David Smith,United Arab Emirates,hiphop,True,25
+63,Jennifer Hudson,Jamaica,electronic,True,15
+64,Stephen Guerrero,Lithuania,latin,False,23
+65,Elizabeth Moreno,Mali,pop,False,21
+66,Brandy Diaz,Mongolia,electronic,True,5
+67,David Robertson,Hungary,pop,False,27
+68,James Stewart,Denmark,latin,True,11
+69,Jessica Andersen,Finland,latin,True,17
+70,Alan Henson,Malta,latin,True,8
+71,David Nelson Jr.,Guam,pop,True,6
+72,Edward Bryant MD,Bulgaria,rock,False,27
+73,Denise Parker,Cyprus,latin,False,2
+74,Tiffany Perez,Tokelau,electronic,True,1
+75,Melissa Brown,Canada,hiphop,True,22
+76,James Mitchell,Poland,pop,True,8
+77,Stephen Chavez,Saint Vincent and the Grenadines,pop,True,28
+78,Victoria Anderson,Bhutan,pop,False,26
+79,Thomas Lee,Western Sahara,jazz,False,16
+80,John West,Cote d'Ivoire,pop,True,15
+81,Courtney Farrell,Antigua and Barbuda,latin,False,16
+82,Jill Kennedy,Iraq,hiphop,False,30
+83,Barbara Beck,Cape Verde,latin,True,3
+84,Michael Moore,Turks and Caicos Islands,latin,True,30
+85,Bryan Smith,Senegal,rock,False,5
+86,Meredith Vega,Equatorial Guinea,jazz,True,10
+87,Benjamin Olsen,Svalbard & Jan Mayen Islands,rock,True,3
+88,Gary Smith,Poland,electronic,True,23
+89,Travis Armstrong,Somalia,electronic,True,13
+90,Ryan Davis,Bahamas,jazz,False,4
+91,Andrew Hamilton,Myanmar,hiphop,False,23
+92,William Heath,United States Minor Outlying Islands,electronic,False,28
+93,Sean Thompson,Barbados,jazz,True,17
+94,Leslie Castillo,Croatia,jazz,True,19
+95,James Johnson,India,electronic,True,9
+96,Alyssa Heath,Yemen,rock,True,23
+97,Adrian Garcia,Vietnam,rock,True,30
+98,Alex Mcclure,Guatemala,pop,False,2
+99,Eddie Walter,Aruba,pop,False,18
+100,Samuel Spencer,Bhutan,electronic,False,10
+101,Brittany Moss,Uganda,pop,True,29
+102,Adam Myers II,Fiji,hiphop,True,5
+103,Miss Rachel Burns,Martinique,jazz,True,28
+104,Steven Booker,Cook Islands,pop,True,6
+105,Gary Kelley,Germany,pop,False,8
+106,Emily Carter,Uruguay,hiphop,True,27
+107,Herbert Warner,Sri Lanka,jazz,False,21
+108,Felicia Moran,Djibouti,pop,True,26
+109,John Smith,Antigua and Barbuda,rock,False,24
+110,Kimberly West MD,Marshall Islands,latin,True,11
+111,Linda Wright,Belgium,jazz,True,25
+112,Victor Rodriguez,Liechtenstein,pop,True,3
+113,James Woods,Spain,pop,True,24
+114,Beth Evans,Albania,rock,True,12
+115,Devin Silva,Bangladesh,rock,False,9
+116,Ariana Hines,Colombia,jazz,True,22
+117,Angela Rice,Cameroon,hiphop,True,12
+118,Brian Powers,Papua New Guinea,jazz,True,20
+119,Jennifer Peters,Brunei Darussalam,hiphop,False,3
+120,Dr. Kenneth Robinson DVM,Comoros,electronic,False,4
+121,Michelle Luna DVM,Brazil,hiphop,True,25
+122,Samuel Horne,Somalia,rock,True,27
+123,Katrina Richards,Hungary,latin,True,25
+124,Rhonda Martin,Morocco,electronic,False,29
+125,Michael Long,Ireland,electronic,False,16
+126,Michael Hardin,Guadeloupe,electronic,True,25
+127,Kenneth Brown,Saint Helena,pop,True,18
+128,Margaret Kemp,Oman,latin,True,14
+129,Melissa Dennis,Malta,hiphop,True,18
+130,Richard White,Finland,rock,True,10
+131,Holly Clark,Thailand,latin,False,5
+132,Alexis Rowland,Libyan Arab Jamahiriya,hiphop,True,2
+133,Dawn Pace,Argentina,jazz,False,2
+134,Lori Dixon,Lesotho,pop,True,30
+135,Robert Matthews,Montserrat,hiphop,True,29
+136,Leah Watson,Israel,pop,True,26
+137,Deborah Green,Austria,electronic,True,20
+138,Jack Gomez,Mauritius,electronic,False,9
+139,Melinda Ramirez,Saint Vincent and the Grenadines,pop,True,16
+140,Jared Walker,Saint Barthelemy,pop,False,12
+141,Jason Johnson,Trinidad and Tobago,electronic,True,2
+142,Daniel Newman,Mauritania,electronic,True,22
+143,Andrew Doyle,Malaysia,latin,False,4
+144,Michelle Garcia,Turkmenistan,latin,False,17
+145,Amanda Anderson,Nicaragua,jazz,True,16
+146,Rachel Yates,Zambia,rock,False,15
+147,Eileen Reyes,Guam,jazz,False,12
+148,Robert Raymond,North Macedonia,electronic,True,8
+149,Jasmin Reed,Trinidad and Tobago,electronic,True,10
+150,Michael Smith,Montserrat,hiphop,False,15
+151,Eduardo Holt,Tuvalu,rock,False,30
+152,Alexandria Reese,Thailand,electronic,False,1
+153,Bradley Brennan,Niger,jazz,True,21
+154,John Pearson,Israel,electronic,True,10
+155,Juan Walker,South Africa,electronic,False,19
+156,William Smith,Gambia,latin,True,6
+157,Susan White,Turkey,latin,True,3
+158,Dalton Moss,Moldova,hiphop,True,15
+159,Robert Rowe,Kiribati,hiphop,False,21
+160,Crystal Adams,Paraguay,latin,True,19
+161,Mark Hernandez,North Macedonia,hiphop,True,23
+162,Charles Leonard,Iran,electronic,False,23
+163,Andrew Cummings,Lithuania,pop,True,24
+164,Brittney Anderson,United States Minor Outlying Islands,hiphop,False,15
+165,Amber Lewis,Benin,pop,False,18
+166,Richard Thompson,Uganda,hiphop,False,8
+167,Michael Ellis,Chile,latin,False,22
+168,John Sanford,Fiji,pop,True,27
+169,Gregory Lopez,Gibraltar,electronic,False,25
+170,Raymond Evans,Uzbekistan,rock,False,26
+171,Tim Miller,Lao People's Democratic Republic,hiphop,True,27
+172,Chelsea Marsh,Germany,hiphop,True,6
+173,Carl Bowman,Guyana,hiphop,False,2
+174,Dennis Thomas,Antarctica (the territory South of 60 deg S),rock,False,5
+175,Derek Rivera,Namibia,latin,True,11
+176,Omar Parker,Tuvalu,hiphop,True,5
+177,Brandy Wilson,Macao,electronic,False,20
+178,Jacqueline Alvarado,El Salvador,jazz,True,5
+179,Dan Snyder DDS,American Samoa,pop,False,23
+180,Rachel Myers,United States Minor Outlying Islands,jazz,False,25
+181,William Thompson,North Macedonia,electronic,False,10
+182,William Rodriguez,Bahamas,jazz,False,11
+183,Sarah Webb PhD,Gibraltar,electronic,False,8
+184,Alyssa Zimmerman,Gabon,jazz,True,18
+185,Jesus Thomas,British Virgin Islands,pop,False,5
+186,Kyle Casey,Lithuania,latin,True,5
+187,Stacey Saunders,France,electronic,False,22
+188,Samuel King,Iceland,latin,False,18
+189,David White,Rwanda,hiphop,False,16
+190,Bradley Thompson,Reunion,latin,True,20
+191,Melissa Hicks,Congo,pop,True,12
+192,Becky Sawyer,Turkey,electronic,False,18
+193,Louis Hull,Niue,pop,True,1
+194,Julie Henry,Moldova,jazz,True,6
+195,Dr. Michael Lane,Cuba,latin,True,18
+196,Daniel Lee,Dominican Republic,electronic,False,7
+197,Shawn Obrien,Saudi Arabia,pop,False,2
+198,Patricia Garner,Holy See (Vatican City State),hiphop,False,10
+199,Dawn Moore,Holy See (Vatican City State),pop,True,25
+200,Stephanie Michael,Guernsey,pop,False,13
+201,Melissa Mckinney,Andorra,jazz,True,4
+202,Mark Beard,Jersey,latin,True,3
+203,Allen Morse,Palau,pop,True,13
+204,Jade Thomas,Belize,pop,False,26
+205,Jeremiah Adkins,Mali,latin,True,1
+206,Kari Williams,Saint Pierre and Miquelon,jazz,True,30
+207,Angela Ford,Puerto Rico,rock,True,23
+208,Dawn Garcia,United Kingdom,jazz,True,25
+209,Carrie Hamilton,United Arab Emirates,latin,True,11
+210,Jason Callahan,Gambia,rock,False,9
+211,Carmen Rogers,Maldives,pop,True,26
+212,John Reese,Jordan,electronic,False,10
+213,Alexander Parks,Tokelau,rock,False,27
+214,Shelby Lewis DVM,India,electronic,True,13
+215,Christopher Hurley,China,pop,False,22
+216,Joseph Anderson,Uruguay,jazz,True,12
+217,Samuel Rios,Azerbaijan,pop,True,27
+218,Stephen White,Micronesia,hiphop,True,24
+219,Wendy Smith,Paraguay,jazz,False,22
+220,Joseph Davis,Tuvalu,jazz,True,21
+221,Greg Nielsen,Dominica,electronic,True,29
+222,Jorge Trujillo,Ecuador,rock,True,29
+223,Sierra Fuller,Congo,pop,False,8
+224,William Stewart,Guadeloupe,pop,False,18
+225,Michael Jackson,Syrian Arab Republic,pop,True,2
+226,Timothy Small,Falkland Islands (Malvinas),hiphop,True,25
+227,Thomas Schaefer,Zimbabwe,hiphop,True,9
+228,Brett Torres,Martinique,rock,False,1
+229,Christie Juarez,Botswana,rock,False,1
+230,Sarah Dickson,Saint Martin,rock,False,21
+231,Danielle Robinson,Isle of Man,jazz,False,23
+232,Lori Brown,Sri Lanka,jazz,False,12
+233,Theresa Smith,Malaysia,electronic,True,28
+234,Richard Zavala,Guadeloupe,rock,True,2
+235,Christine May,Sweden,rock,True,20
+236,Katherine Arroyo,Maldives,latin,True,11
+237,Adrienne Horton,Italy,latin,False,15
+238,Tammy Tucker,Ukraine,hiphop,True,4
+239,John Mills,Uzbekistan,pop,False,29
+240,Janice Campbell,Botswana,pop,False,19
+241,Michael Carter,Bahrain,rock,True,21
+242,Nicholas Wilson,Senegal,rock,False,4
+243,Sydney Washington,Norway,electronic,False,15
+244,Robert Bass,Jamaica,pop,True,13
+245,Travis Ward,Belize,jazz,True,4
+246,Michael Reyes,Tajikistan,rock,False,2
+247,Mark Carr,United States Virgin Islands,hiphop,True,7
+248,Laura Hess,Qatar,pop,True,12
+249,Benjamin Ryan,Antigua and Barbuda,pop,True,18
+250,Kevin Davis,Botswana,hiphop,True,12
+251,Tommy Santos,Bouvet Island (Bouvetoya),hiphop,False,16
+252,Morgan Walton,Gabon,electronic,True,19
+253,Aaron Klein,Holy See (Vatican City State),jazz,False,26
+254,Sheila Allen,Turkmenistan,hiphop,True,11
+255,Jordan Harrell,Guinea,rock,True,9
+256,Denise Schneider,Palau,hiphop,False,17
+257,Alejandro Young,Montenegro,jazz,False,22
+258,Tony Boyd,Paraguay,pop,False,7
+259,Melissa Kane,Tonga,jazz,True,7
+260,Julia Nguyen,Malta,pop,True,4
+261,Danielle Cook,United States of America,pop,True,6
+262,Thomas Smith,Cocos (Keeling) Islands,pop,True,28
+263,Jessica Potts,Tajikistan,pop,True,3
+264,Adrian Wright,United States of America,rock,False,18
+265,Julia Cantu,Nauru,electronic,True,29
+266,Raven Smith,Taiwan,hiphop,False,14
+267,Kristin Huerta,Singapore,pop,False,30
+268,Rhonda Allen,Norway,latin,True,3
+269,Charlotte Tapia,Mayotte,pop,False,20
+270,Terry Rogers,Botswana,rock,False,15
+271,Samuel Morrow,Algeria,electronic,True,27
+272,Kaitlin Sanchez,Portugal,latin,True,16
+273,Danny Lester,Cook Islands,hiphop,True,9
+274,Natalie Johnson,Mozambique,latin,True,17
+275,Daniel Brown,Belarus,latin,True,12
+276,Daniel Ford,Bermuda,pop,True,6
+277,Carol Robinson,Latvia,rock,False,18
+278,Isaiah Berg,Uruguay,jazz,True,26
+279,Valerie Martin,Benin,rock,False,4
+280,Deborah Irwin,Congo,pop,True,4
+281,Deborah Hernandez,Mongolia,hiphop,False,14
+282,Brian Parker,Antarctica (the territory South of 60 deg S),jazz,False,26
+283,Angela Romero,Jamaica,latin,False,20
+284,Greg Jones,Oman,jazz,True,3
+285,Jeremy Davis,Jamaica,electronic,False,3
+286,Victoria Ho,Netherlands Antilles,latin,False,14
+287,Kelsey Goodman,Korea,rock,False,21
+288,Adam Baxter,Central African Republic,latin,False,11
+289,Mary Carrillo,Monaco,hiphop,False,12
+290,Hailey Harper,Gabon,jazz,True,15
+291,Michelle Stark,Georgia,hiphop,True,12
+292,Gerald Robinson,Angola,rock,False,17
+293,Daniel Long,Mauritius,pop,True,29
+294,Eric Lewis,Tunisia,electronic,False,24
+295,Sandra Rodriguez,Macao,hiphop,False,17
+296,Chris Hays,Niue,hiphop,True,29
+297,Brenda Richardson,Bahamas,hiphop,False,25
+298,David Garcia,Burkina Faso,pop,True,7
+299,Ruben Gibson,New Zealand,rock,True,14
+300,Kimberly Jones,Netherlands Antilles,latin,False,7
+301,Michelle Alvarado,Finland,pop,True,8
+302,Jason Carroll,Bolivia,electronic,True,8
+303,Blake Williams,Martinique,rock,False,27
+304,Patricia Guerra,Christmas Island,rock,False,24
+305,Theresa Carney,Central African Republic,latin,False,19
+306,Patricia Clark,Chile,jazz,False,10
+307,Brian Smith,Macao,electronic,False,5
+308,Cynthia Robinson,Northern Mariana Islands,hiphop,True,17
+309,Susan Carter,Trinidad and Tobago,hiphop,True,21
+310,Samantha Marshall,Sri Lanka,jazz,False,13
+311,Julie Hunter,Svalbard & Jan Mayen Islands,hiphop,False,19
+312,Alisha Brown,Djibouti,pop,False,17
+313,Chad Hines,Gibraltar,pop,True,17
+314,Cindy Neal,Finland,rock,False,19
+315,Benjamin Hall,Portugal,electronic,True,2
+316,Crystal Martin,United States Virgin Islands,latin,True,6
+317,Theresa Myers,Albania,electronic,True,25
+318,David Brown,Puerto Rico,hiphop,False,1
+319,Bobby Perry,Cook Islands,electronic,True,30
+320,Christopher Baker,Yemen,electronic,False,20
+321,Angela White,Luxembourg,pop,True,15
+322,Kayla Adams,Saint Kitts and Nevis,electronic,False,25
+323,Michael Holland,Austria,hiphop,False,3
+324,Katherine Obrien,Gabon,rock,True,10
+325,Joseph Martin,Macao,hiphop,False,27
+326,Gary Jones,Jordan,latin,True,21
+327,Grant Kim,Chad,electronic,False,29
+328,Larry Johnson,Slovakia (Slovak Republic),rock,True,25
+329,Austin Hawkins,French Southern Territories,jazz,False,16
+330,Kristi Webb,Chile,pop,True,10
+331,Debra White,Samoa,hiphop,False,21
+332,Kimberly Anderson,Bahrain,jazz,True,13
+333,Kathy Obrien MD,Saint Martin,rock,False,20
+334,Michael Rodriguez,Equatorial Guinea,pop,True,21
+335,Christopher Garza,Germany,electronic,False,1
+336,Hunter Lambert,Syrian Arab Republic,rock,True,20
+337,Zachary Brown,Guatemala,electronic,True,10
+338,Justin Hoffman Jr.,Uruguay,latin,False,11
+339,Dean Wilson,Jamaica,latin,False,2
+340,Michael Young,Paraguay,electronic,False,4
+341,Sherry Douglas,Antarctica (the territory South of 60 deg S),pop,False,16
+342,Katie Powell,Czech Republic,pop,True,23
+343,Holly Johnson,Maldives,jazz,True,27
+344,Pamela Fisher,El Salvador,jazz,False,30
+345,Kristy Morse,Sweden,pop,True,3
+346,Sharon Kennedy,Vanuatu,jazz,False,18
+347,Jeremy Murphy,Indonesia,rock,False,27
+348,Samuel Stewart,United States Minor Outlying Islands,latin,False,12
+349,Cheryl Butler,Tokelau,electronic,True,1
+350,Dana Rich,Philippines,pop,False,23
+351,Allison Ramsey,Australia,jazz,True,3
+352,Teresa Jenkins,Heard Island and McDonald Islands,hiphop,True,8
+353,Gregory Morales,Guadeloupe,hiphop,True,23
+354,Karen Krause,Netherlands Antilles,latin,False,7
+355,Michelle Reyes,Israel,rock,True,26
+356,Christina Barnes,Saint Pierre and Miquelon,jazz,True,27
+357,Jason Woods,Nigeria,rock,True,22
+358,Jason Bonilla,Micronesia,rock,True,18
+359,April Johnson,Armenia,hiphop,False,23
+360,Desiree Rivera,Burundi,latin,False,24
+361,Dustin Scott,Norfolk Island,latin,False,16
+362,Rhonda Washington,Saint Helena,electronic,True,14
+363,John Spence,Argentina,jazz,True,12
+364,Christina Patrick,Pitcairn Islands,jazz,False,2
+365,Daniel Allen,Cook Islands,latin,False,24
+366,Nicole Johns,New Zealand,latin,True,12
+367,Timothy Greene,Christmas Island,pop,True,16
+368,Michael Bridges,Samoa,rock,True,28
+369,Olivia King,Bosnia and Herzegovina,electronic,False,18
+370,Caitlin Lee,Seychelles,jazz,True,25
+371,Robert Martinez,Denmark,rock,False,29
+372,Steven Meyers,Kyrgyz Republic,latin,False,23
+373,Jeffrey Turner,Mongolia,rock,True,21
+374,Daniel Davila,Saint Vincent and the Grenadines,electronic,True,28
+375,Roy Moore,Rwanda,rock,True,25
+376,Julie Vasquez,Moldova,pop,True,6
+377,Russell Ashley,Belize,hiphop,True,18
+378,Jennifer Weaver,Bosnia and Herzegovina,latin,True,16
+379,Stephen Meyers,Burkina Faso,pop,False,16
+380,Richard Hatfield,Spain,rock,True,22
+381,Diane Cabrera,Netherlands Antilles,pop,False,5
+382,Jacob Miller,Iran,latin,True,11
+383,David Keller,Uzbekistan,jazz,True,28
+384,Shelly Garner,Mongolia,rock,True,5
+385,Laura Martin,Albania,electronic,True,8
+386,Sean Tyler MD,Canada,hiphop,True,18
+387,Lisa White,Chile,pop,True,12
+388,Terry Dean,Saint Martin,jazz,False,11
+389,Billy Foster,Burundi,jazz,True,8
+390,Jessica Moore,Saint Lucia,electronic,True,6
+391,Thomas Wade,Niue,pop,True,5
+392,Chad Blackburn,Kyrgyz Republic,hiphop,True,1
+393,Jon Gomez,Vietnam,hiphop,False,21
+394,Christopher Anderson,Nauru,latin,False,26
+395,Mr. Alexander Elliott,Namibia,latin,True,25
+396,Richard Irwin,Norway,latin,True,15
+397,Darrell Gonzalez,San Marino,latin,True,18
+398,Jonathon Lopez DVM,Christmas Island,pop,False,11
+399,Cody Foster,Christmas Island,hiphop,True,17
+400,Paul Perez,Montenegro,rock,True,14
+401,Suzanne Bennett,Estonia,rock,False,25
+402,William Harris,Bahamas,jazz,False,22
+403,Betty Williams DVM,Benin,jazz,True,3
+404,Keith Woodward,Turks and Caicos Islands,latin,True,14
+405,Elizabeth Hudson,Slovakia (Slovak Republic),rock,False,14
+406,Kevin Nguyen,Qatar,hiphop,True,22
+407,Jennifer Horton,Saint Kitts and Nevis,electronic,True,6
+408,Summer Vasquez,Peru,jazz,False,13
+409,Ronald Mitchell,Rwanda,jazz,True,15
+410,Michael Perry,Ghana,latin,True,21
+411,Alexis Wilson,Bahrain,pop,False,12
+412,Andrea Wong,Croatia,jazz,False,19
+413,Kerri Sanchez,Thailand,latin,False,14
+414,Elaine Hoffman,Iran,pop,False,9
+415,Thomas Washington,Bahrain,jazz,True,6
+416,Alejandro Smith,Jersey,rock,True,16
+417,Jim Murray,Slovenia,latin,False,25
+418,Jennifer Woodard,Christmas Island,pop,True,21
+419,Jordan Taylor MD,Cape Verde,electronic,False,10
+420,Joel Moran,Kenya,latin,False,5
+421,Emily Lopez,North Macedonia,hiphop,True,15
+422,John Ramsey,Romania,rock,True,4
+423,Jessica Becker,Botswana,pop,True,23
+424,Cody Ramirez,Paraguay,jazz,True,16
+425,Pamela Gardner,Portugal,pop,False,21
+426,Samantha Norton,Saint Martin,pop,True,15
+427,Sean Hinton,Albania,pop,True,24
+428,Mark Sutton,Bermuda,pop,False,29
+429,Robin Hill,Suriname,rock,False,27
+430,Lori White,Uzbekistan,rock,True,27
+431,Anthony Romero,Palau,rock,False,25
+432,Michelle Harvey,Chile,pop,False,24
+433,Larry Mccoy,Grenada,rock,False,11
+434,Holly Cox,Bulgaria,electronic,True,29
+435,Keith Miranda,Vietnam,pop,False,30
+436,Lisa Hart,Palestinian Territory,hiphop,False,13
+437,Kevin Brown,El Salvador,pop,False,23
+438,Cole Gomez,Belize,jazz,True,15
+439,Tiffany Brown,Serbia,hiphop,True,12
+440,Jamie Pham,Kenya,electronic,False,21
+441,Anne Gordon,Qatar,hiphop,False,6
+442,Nicholas Riggs,Sweden,latin,False,5
+443,Cynthia Scott MD,Sudan,rock,False,24
+444,Brian Morris,Tonga,jazz,False,8
+445,Michael Carson,Liberia,electronic,True,10
+446,Benjamin Huang,Lebanon,latin,True,4
+447,Brittany Anderson,British Indian Ocean Territory (Chagos Archipelago),hiphop,False,7
+448,Todd Weaver,Slovenia,latin,False,1
+449,Maria Terry,Marshall Islands,pop,True,5
+450,Shawn Hart,Rwanda,latin,False,26
+451,Tyler West,Portugal,electronic,False,18
+452,Donald Adams,Oman,hiphop,False,6
+453,Cynthia Rose,Haiti,jazz,False,7
+454,Melissa Campbell,Heard Island and McDonald Islands,electronic,False,22
+455,Richard Ramirez,Sudan,electronic,True,20
+456,Angel Fisher,Hungary,latin,True,15
+457,Brittany Higgins,Morocco,pop,False,7
+458,Chelsea Spencer,North Macedonia,electronic,False,28
+459,Mr. Connor Williamson,Antarctica (the territory South of 60 deg S),pop,False,26
+460,Carol Sanchez,Andorra,rock,True,3
+461,Amanda Edwards,British Indian Ocean Territory (Chagos Archipelago),pop,False,26
+462,Denise Johnson,Moldova,pop,True,24
+463,Tyler Miller,Switzerland,rock,False,25
+464,Dawn Rodriguez,United Arab Emirates,electronic,True,1
+465,Joseph Rose,South Africa,hiphop,True,12
+466,Mr. John Martinez Jr.,Australia,hiphop,True,30
+467,Angela Rodriguez,Estonia,latin,False,20
+468,Mr. Kyle Sanchez,Germany,jazz,True,19
+469,Judy Burnett,Korea,rock,True,14
+470,Sean Hudson,Slovakia (Slovak Republic),rock,False,23
+471,Sara Fowler,Taiwan,electronic,True,12
+472,Mr. Christopher Stevens,Tanzania,rock,False,15
+473,Michael Olsen,Liberia,hiphop,False,16
+474,Ana Bennett,Cameroon,electronic,False,25
+475,Erica Hanna,Guinea-Bissau,rock,True,30
+476,Kimberly Wagner,Vietnam,electronic,True,12
+477,Michelle Smith,Ireland,hiphop,True,30
+478,Kimberly Cooper,Madagascar,pop,True,5
+479,Ronnie Joyce,Bhutan,pop,False,18
+480,Dorothy White,Netherlands Antilles,pop,False,17
+481,Elizabeth Johnson,Korea,rock,False,17
+482,Crystal Hansen,Puerto Rico,pop,False,16
+483,Thomas Brooks,Korea,latin,True,11
+484,Traci Campbell,Qatar,pop,True,12
+485,Thomas Gray,Antigua and Barbuda,jazz,False,23
+486,Matthew Sanders,Swaziland,pop,False,20
+487,Emma Thomas,Belize,rock,False,19
+488,Sara Hobbs,Samoa,electronic,False,17
+489,Stacie Martin MD,Cambodia,jazz,True,20
+490,Joseph Gonzalez,Rwanda,rock,False,10
+491,Brendan Pearson,Palau,pop,False,28
+492,Chelsea Duncan,Djibouti,pop,False,5
+493,Alexandra Anderson,Cuba,hiphop,True,25
+494,Lauren Villanueva,Jordan,rock,True,13
+495,Andrea Wolfe,Botswana,jazz,False,17
+496,Patrick Smith,Sri Lanka,hiphop,True,20
+497,Mark Reyes,Greece,jazz,False,7
+498,Daniel Davis,Burundi,latin,False,23
+499,Michelle Mitchell,Bolivia,hiphop,True,2
+500,Michael Stone,Cayman Islands,jazz,False,18
