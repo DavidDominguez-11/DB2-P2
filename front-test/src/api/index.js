@@ -68,6 +68,26 @@ async function request(method, path, { params, body, headers: extraHeaders, base
     throw new Error(extractErrorMessage(data, `HTTP ${response.status}`))
   }
 
+  // ── Envelope normalization ────────────────────────────────────────────────
+  // Many endpoints return { posts: [...], skip, limit } or { users: [...] }
+  // instead of a bare array. Detect that pattern and unwrap the list so
+  // callers can always do r.data and get the array they expect.
+  //
+  // Heuristic: if the response is a plain object (not null, not an array),
+  // find keys whose value is an array; if exactly one such key exists and the
+  // remaining keys are pagination metadata (skip, limit, total, offset, count,
+  // page, pages, has_more, next, previous), unwrap that array.
+  const PAGINATION_KEYS = new Set(['skip','limit','total','offset','count','page','pages','has_more','next','previous'])
+  if (data !== null && typeof data === 'object' && !Array.isArray(data)) {
+    const keys = Object.keys(data)
+    const listKeys = keys.filter(k => Array.isArray(data[k]))
+    const metaKeys = keys.filter(k => !Array.isArray(data[k]))
+    if (listKeys.length === 1 && metaKeys.every(k => PAGINATION_KEYS.has(k))) {
+      data = data[listKeys[0]]
+    }
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   // Returns { data, status, headers }
   return { data, status: response.status, headers: response.headers }
 }
