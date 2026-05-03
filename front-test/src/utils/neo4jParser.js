@@ -40,17 +40,28 @@ export const formatDuration = (minutes) => {
 }
 
 export const formatDate = (dateStr) => {
-  return new Date(dateStr).toLocaleDateString('es-GT', { year: 'numeric', month: 'short', day: 'numeric' })
+  // Force local-noon to avoid UTC-offset day shift on date-only strings
+  const isDateOnly = /^\d{4}-\d{2}-\d{2}$/.test(String(dateStr))
+  const date = isDateOnly ? new Date(`${dateStr}T12:00:00`) : new Date(dateStr)
+  if (isNaN(date.getTime())) return String(dateStr)
+  return date.toLocaleDateString('es-GT', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 export const timeAgo = (dateStr) => {
+  if (!dateStr) return ''
+  // Neo4j often sends plain dates like "2024-10-19" without a time component.
+  // Parsing them as UTC midnight can shift the day in local timezones,
+  // so we force noon local time for date-only strings.
+  const isDateOnly = /^\d{4}-\d{2}-\d{2}$/.test(String(dateStr))
+  const date = isDateOnly ? new Date(`${dateStr}T12:00:00`) : new Date(dateStr)
+  if (isNaN(date.getTime())) return String(dateStr)
   const now = new Date()
-  const date = new Date(dateStr)
   const diff = now - date
   const hours = Math.floor(diff / 3600000)
   if (hours < 1) return 'hace unos minutos'
   if (hours < 24) return `hace ${hours}h`
   const days = Math.floor(hours / 24)
   if (days < 7) return `hace ${days}d`
-  return formatDate(dateStr)
+  if (days < 30) return `hace ${Math.floor(days / 7)} sem`
+  return formatDate(String(dateStr))
 }
