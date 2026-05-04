@@ -5,10 +5,13 @@ from models.relations import VALID_RELATION_TYPES, ALLOWED_NODE_PROPERTIES, ALLO
 
 
 def _validate_prop(entity: str, prop: str, allowlist: dict) -> None:
-    """Lanza ValueError si la propiedad no esta en el allowlist del entity."""
-    allowed = allowlist.get(entity, set())
+    """Lanza ValueError si la propiedad no esta en el allowlist del entity.
+    Si el entity no tiene allowlist definido, se permite cualquier propiedad."""
+    allowed = allowlist.get(entity)
+    if allowed is None:
+        return  # entidad sin allowlist → permitir todo
     if prop not in allowed:
-        raise ValueError(f"Propiedad '{prop}' no permitida para '{entity}'")
+        raise ValueError(f"Propiedad '{prop}' no permitida para '{entity}'. Permitidas: {sorted(allowed)}")
 
 
 async def bulk_update_nodes(

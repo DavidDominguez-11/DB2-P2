@@ -73,12 +73,19 @@ async def create_node(
     if not id_field or id_field not in properties:
         raise ValueError(f"Falta el campo ID requerido: {id_field}")
 
-    labels_str = ":".join(labels)
     # is_artist / is_featured / is_ad son flags de control, no van al grafo
     clean_props = {k: v for k, v in properties.items() if not k.startswith("is_")}
     prepared = prepare_properties(clean_props)
 
-    query = f"MERGE (n:{labels_str} {{{id_field}: $id}}) SET n += $props RETURN n"
+    # MERGE solo por el label primario para respetar constraints de unicidad,
+    # luego aplica labels adicionales con SET
+    extra_labels = [l for l in labels if l != primary]
+    extra_labels_clause = "".join(f" SET n:{l}" for l in extra_labels)
+    query = (
+        f"MERGE (n:{primary} {{{id_field}: $id}})"
+        f"{extra_labels_clause}"
+        f" SET n += $props RETURN n"
+    )
     result = await session.run(query, id=properties[id_field], props=prepared)
     record = await result.single()
     return node_to_dict(record["n"]) if record else None

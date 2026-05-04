@@ -21,6 +21,8 @@ from schemas.generic import GenericResponse, AffectedResponse
 router = APIRouter(prefix="/interactions", tags=["interactions"])
 
 
+# ── Rutas fijas (deben ir ANTES de las rutas con parámetros) ─────────────────
+
 @router.post("/", response_model=GenericResponse)
 async def create_interaction(
     body: CreateRelationshipRequest,
@@ -34,10 +36,7 @@ async def create_interaction(
             body.rel_type, body.properties,
         )
         if not result:
-            raise HTTPException(
-                status_code=404,
-                detail="Uno o ambos nodos no existen"
-            )
+            raise HTTPException(status_code=404, detail="Uno o ambos nodos no existen")
         return GenericResponse(success=True, message="Relacion creada", data=result)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -54,46 +53,6 @@ async def list_interactions_by_type(
         return {"rel_type": rel_type, "data": data}
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
-
-
-@router.get("/{element_id}")
-async def get_interaction(element_id: str, db: AsyncSession = Depends(get_db)):
-    result = await get_relationship(db, element_id)
-    if not result:
-        raise HTTPException(status_code=404, detail="Relacion no encontrada")
-    return result
-
-
-@router.patch("/{element_id}", response_model=GenericResponse)
-async def update_interaction(
-    element_id: str,
-    body: UpdateRelationshipRequest,
-    db: AsyncSession = Depends(get_db),
-):
-    result = await update_relationship_properties(db, element_id, body.properties)
-    if not result:
-        raise HTTPException(status_code=404, detail="Relacion no encontrada")
-    return GenericResponse(success=True, message="Relacion actualizada", data=result)
-
-
-@router.delete("/{element_id}/properties", response_model=GenericResponse)
-async def remove_interaction_properties(
-    element_id: str,
-    body: RemoveRelationshipPropertiesRequest,
-    db: AsyncSession = Depends(get_db),
-):
-    result = await remove_relationship_properties(db, element_id, body.property_names)
-    if not result:
-        raise HTTPException(status_code=404, detail="Relacion no encontrada")
-    return GenericResponse(success=True, message="Propiedades eliminadas", data=result)
-
-
-@router.delete("/{element_id}", response_model=GenericResponse)
-async def delete_interaction(element_id: str, db: AsyncSession = Depends(get_db)):
-    deleted = await delete_relationship(db, element_id)
-    if not deleted:
-        raise HTTPException(status_code=404, detail="Relacion no encontrada")
-    return GenericResponse(success=True, message="Relacion eliminada")
 
 
 @router.patch("/bulk/update", response_model=AffectedResponse)
@@ -140,3 +99,45 @@ async def bulk_delete_interactions(
         return AffectedResponse(success=True, affected=count, message="Relaciones eliminadas")
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+
+# ── Rutas con parámetros (deben ir DESPUÉS de las rutas fijas) ───────────────
+
+@router.get("/{element_id}")
+async def get_interaction(element_id: str, db: AsyncSession = Depends(get_db)):
+    result = await get_relationship(db, element_id)
+    if not result:
+        raise HTTPException(status_code=404, detail="Relacion no encontrada")
+    return result
+
+
+@router.patch("/{element_id}", response_model=GenericResponse)
+async def update_interaction(
+    element_id: str,
+    body: UpdateRelationshipRequest,
+    db: AsyncSession = Depends(get_db),
+):
+    result = await update_relationship_properties(db, element_id, body.properties)
+    if not result:
+        raise HTTPException(status_code=404, detail="Relacion no encontrada")
+    return GenericResponse(success=True, message="Relacion actualizada", data=result)
+
+
+@router.delete("/{element_id}/properties", response_model=GenericResponse)
+async def remove_interaction_properties(
+    element_id: str,
+    body: RemoveRelationshipPropertiesRequest,
+    db: AsyncSession = Depends(get_db),
+):
+    result = await remove_relationship_properties(db, element_id, body.property_names)
+    if not result:
+        raise HTTPException(status_code=404, detail="Relacion no encontrada")
+    return GenericResponse(success=True, message="Propiedades eliminadas", data=result)
+
+
+@router.delete("/{element_id}", response_model=GenericResponse)
+async def delete_interaction(element_id: str, db: AsyncSession = Depends(get_db)):
+    deleted = await delete_relationship(db, element_id)
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Relacion no encontrada")
+    return GenericResponse(success=True, message="Relacion eliminada")

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from api.v1.endpoints import (
     users, songs, posts, artists, playlists, genres,
-    interactions, analytics, bulk,
+    interactions, analytics, bulk, nodes, cypher,
 )
 
 router = APIRouter(prefix="/api/v1")
@@ -15,3 +15,5 @@ router.include_router(genres.router)
 router.include_router(interactions.router)
 router.include_router(analytics.router)
 router.include_router(bulk.router)
+router.include_router(nodes.router)
+router.include_router(cypher.router)

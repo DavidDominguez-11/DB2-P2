@@ -4,13 +4,19 @@ from core.database import get_db
 from crud.nodes import (
     create_node, get_node_with_connections, get_nodes,
     update_node_properties, remove_node_properties, delete_node,
-    aggregate_nodes,
+    aggregate_nodes, serialize_value,
 )
 from schemas.post import PostCreate, PostUpdate
 from schemas.generic import GenericResponse
 
 router = APIRouter(prefix="/posts", tags=["posts"])
 
+
+def _row(record) -> dict:
+    return {k: serialize_value(record[k]) for k in record.keys()}
+
+
+# ── Rutas fijas (antes de /{post_id}) ────────────────────────────────────────
 
 @router.post("/", response_model=GenericResponse)
 async def create_post(body: PostCreate, db: AsyncSession = Depends(get_db)):
@@ -20,6 +26,89 @@ async def create_post(body: PostCreate, db: AsyncSession = Depends(get_db)):
         return GenericResponse(success=True, message="Post creado", data=result)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/feed")
+async def get_feed(
+    user_id: str | None = Query(default=None),
+    skip: int = Query(default=0, ge=0),
+    limit: int = Query(default=25, le=100),
+    db: AsyncSession = Depends(get_db),
+):
+    """Feed con likes, comentarios y autor via relación CREATED. Filtra por user_id si se provee."""
+    if user_id:
+        query = """
+        MATCH (u:User)-[:CREATED]->(p:Post)
+        WHERE toString(u.user_id) = toString($uid)
+        OPTIONAL MATCH ()-[l:LIKED]->(p)
+        OPTIONAL MATCH ()-[c:COMMENTED]->(p)
+        RETURN p.post_id      AS post_id,
+               p.caption      AS caption,
+               p.fecha        AS fecha,
+               p.tipo         AS tipo,
+               p.privacidad   AS privacidad,
+               p.hashtags     AS hashtags,
+               count(DISTINCT l) AS likes,
+               count(DISTINCT c) AS comentarios,
+               u.username     AS autor,
+               u.user_id      AS autor_id
+        ORDER BY p.fecha DESC
+        SKIP $skip LIMIT $limit
+        """
+        params: dict = {"uid": user_id, "skip": skip, "limit": limit}
+    else:
+        query = """
+        MATCH (p:Post)
+        OPTIONAL MATCH (u:User)-[:CREATED]->(p)
+        OPTIONAL MATCH ()-[l:LIKED]->(p)
+        OPTIONAL MATCH ()-[c:COMMENTED]->(p)
+        RETURN p.post_id      AS post_id,
+               p.caption      AS caption,
+               p.fecha        AS fecha,
+               p.tipo         AS tipo,
+               p.privacidad   AS privacidad,
+               p.hashtags     AS hashtags,
+               count(DISTINCT l) AS likes,
+               count(DISTINCT c) AS comentarios,
+               u.username     AS autor,
+               u.user_id      AS autor_id
+        ORDER BY p.fecha DESC
+        SKIP $skip LIMIT $limit
+        """
+        params = {"skip": skip, "limit": limit}
+    result = await db.run(query, **params)
+    rows = [_row(r) async for r in result]
+    return {"posts": rows, "skip": skip, "limit": limit}
+
+
+@router.get("/feed/follows/{user_id}")
+async def get_follows_feed(
+    user_id: str,
+    limit: int = Query(default=25, le=100),
+    db: AsyncSession = Depends(get_db),
+):
+    """Posts de los usuarios que sigue el usuario dado, via relación CREATED."""
+    query = """
+    MATCH (me:User)-[:FOLLOWS]->(followed:User)-[:CREATED]->(p:Post)
+    WHERE toString(me.user_id) = toString($uid)
+    OPTIONAL MATCH ()-[l:LIKED]->(p)
+    OPTIONAL MATCH ()-[c:COMMENTED]->(p)
+    RETURN p.post_id          AS post_id,
+           p.caption          AS caption,
+           p.fecha            AS fecha,
+           p.tipo             AS tipo,
+           p.privacidad       AS privacidad,
+           p.hashtags         AS hashtags,
+           count(DISTINCT l)  AS likes,
+           count(DISTINCT c)  AS comentarios,
+           followed.username  AS autor,
+           followed.user_id   AS autor_id
+    ORDER BY p.fecha DESC
+    LIMIT $limit
+    """
+    result = await db.run(query, uid=user_id, limit=limit)
+    rows = [_row(r) async for r in result]
+    return {"user_id": user_id, "posts": rows}
 
 
 @router.get("/")
@@ -47,6 +136,8 @@ async def aggregate_posts(
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
+
+# ── Rutas con parámetros ──────────────────────────────────────────────────────
 
 @router.get("/{post_id}")
 async def get_post(post_id: str, db: AsyncSession = Depends(get_db)):

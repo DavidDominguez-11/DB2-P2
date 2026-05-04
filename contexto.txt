@@ -1,0 +1,241 @@
+Actúa como un arquitecto frontend senior especializado en aplicaciones complejas basadas en grafos y desarrolla el diseño completo (arquitectura, componentes, flujos, validaciones y estructura) de un frontend para una aplicación llamada “ParaMetrix”, una red social musical basada en Neo4j.
+
+La implementación debe ser exclusivamente frontend (no código backend), pero debe consumir exactamente los endpoints disponibles en la API proporcionada (OpenAPI) y los endpoints adicionales explícitamente definidos en este prompt. No se permite inventar endpoints, lógica backend o comportamientos no especificados. Si algo no está soportado por la API, debe indicarse claramente como requisito backend pendiente.
+
+---
+
+## CONTEXTO DE LA APLICACIÓN
+
+ParaMetrix es una red social centrada en música donde:
+
+* Los usuarios interactúan mediante canciones, playlists y publicaciones
+* Se modelan relaciones como LISTENED, FOLLOWS, LIKED, etc.
+* El backend usa Neo4j (base de datos de grafos)
+* Existen funcionalidades de analytics como:
+
+  * recomendaciones (Jaccard)
+  * usuarios similares
+  * ranking de influencia
+
+---
+
+## OBJETIVO DEL FRONTEND
+
+Diseñar un frontend completo que:
+
+1. Funcione como red social (feed, perfiles, exploración)
+2. Incluya un módulo avanzado tipo “Graph Manager”
+3. Cumpla TODOS los requisitos académicos obligatorios
+4. Refleje el uso de grafos indirectamente (relaciones, conexiones)
+5. Incluya ejecución real de consultas Cypher
+
+---
+
+## RESTRICCIONES CRÍTICAS
+
+* NO inventar endpoints
+* NO simular labels múltiples
+* NO asumir autenticación si no existe
+* TODO debe mapearse a endpoints reales o definidos aquí
+* Si falta algo → marcar como “backend requerido”
+
+---
+
+## EXTENSIONES BACKEND OBLIGATORIAS
+
+Debes considerar como disponibles estos endpoints adicionales (necesarios para cumplir la rúbrica):
+
+1. Crear nodo con múltiples labels
+   POST /api/v1/nodes
+   Body:
+   {
+   "labels": ["User", "Artist"],
+   "properties": { ... }
+   }
+
+2. Modificar labels de nodo
+   PATCH /api/v1/nodes/{id}/labels
+   Body:
+   {
+   "add": ["Artist"],
+   "remove": []
+   }
+
+3. Obtener labels de nodo
+   GET /api/v1/nodes/{id}/labels
+
+4. Ejecutar Cypher
+   POST /api/v1/cypher/query
+   Body:
+   {
+   "query": "MATCH (n) RETURN n LIMIT 10"
+   }
+
+---
+
+## SECCIONES DEL FRONTEND A DISEÑAR
+
+1. Arquitectura general
+
+* Estructura de carpetas
+* Manejo de estado (React Query / Zustand)
+* Manejo de API (axios/fetch)
+* Separación de capas (UI / services / hooks)
+
+2. Módulos principales
+
+A. Feed (Home)
+
+* Lista de posts
+* Interacciones mediante relaciones
+* Consumo de /posts y /interactions
+
+B. Perfil de usuario
+
+* Datos del usuario
+* Actividad (analytics)
+* Relaciones (seguidores, escuchas)
+
+C. Exploración
+
+* Canciones, artistas, géneros
+* Listados con paginación
+
+D. Playlists
+
+* CRUD de playlists
+* Relación con canciones
+
+E. Analytics Dashboard
+
+* Recomendaciones
+* Usuarios similares
+* Influencia
+* Popularidad
+* Distribución por género
+
+---
+
+## MÓDULO PRINCIPAL: GRAPH MANAGER
+
+Este módulo es obligatorio y debe cubrir completamente la rúbrica.
+
+Diseñar las siguientes sub-secciones:
+
+1. Node Builder
+
+* Formulario dinámico
+* Selección múltiple de labels (OBLIGATORIO)
+* Validación de mínimo 5 propiedades
+* Uso de:
+
+  * endpoints normales (1 label)
+  * /nodes (multi-label)
+
+2. Node Explorer
+
+* Consultar 1 nodo (por ID)
+* Consultar múltiples nodos (tabla)
+* Filtros
+* Agregaciones usando /aggregate
+
+3. Property Manager
+
+* Agregar propiedades (PATCH)
+* Actualizar propiedades
+* Eliminar propiedades
+* Soporte individual y masivo:
+
+  * /bulk/nodes
+  * /bulk/nodes/properties
+
+4. Relationship Builder
+
+* Crear relación entre nodos
+* Seleccionar:
+
+  * origen
+  * destino
+  * tipo
+* Validar mínimo 3 propiedades
+* Usar /interactions
+
+5. Relationship Manager
+
+* Editar relaciones
+* Eliminar relaciones
+* Bulk operations:
+
+  * update
+  * delete
+  * remove properties
+
+6. Delete Panel
+
+* Eliminación individual y masiva de:
+
+  * nodos
+  * relaciones
+
+---
+
+## CYPHER CONSOLE (REQUISITO CLAVE)
+
+Diseñar una interfaz tipo consola con:
+
+* Editor de texto
+* Botón ejecutar
+* Tabla de resultados
+* Historial de queries
+
+Debe usar:
+POST /api/v1/cypher/query
+
+Debe permitir ejecutar al menos 4–6 queries reales.
+
+---
+
+## REQUISITOS DE LA RÚBRICA (VALIDACIONES)
+
+Asegurar que el diseño permita:
+
+✔ Crear nodos con 1 label
+✔ Crear nodos con múltiples labels (REAL)
+✔ Crear nodos con mínimo 5 propiedades
+✔ Consultar 1 nodo
+✔ Consultar múltiples nodos
+✔ Realizar agregaciones
+✔ Gestionar propiedades (individual y masivo)
+✔ Crear relaciones con mínimo 3 propiedades
+✔ Gestionar relaciones (individual y masivo)
+✔ Eliminar nodos (individual y masivo)
+✔ Eliminar relaciones (individual y masivo)
+✔ Ejecutar consultas Cypher reales
+✔ Implementar funcionalidades de data science (analytics)
+
+---
+
+## DETALLES DE DISEÑO UI/UX
+
+* Diseño tipo dashboard moderno
+* Sidebar de navegación
+* Tablas reutilizables
+* Formularios dinámicos
+* Validaciones visibles
+* Feedback de acciones (success/error)
+* Manejo de loading states
+
+---
+
+## ENTREGABLE ESPERADO
+
+Generar:
+
+1. Estructura completa del frontend (carpetas + componentes) NO una pagina sola
+2. Descripción detallada de cada pantalla
+3. Flujo de navegación
+4. Mapeo exacto de cada acción → endpoint
+5. Validaciones obligatorias por requisito
+6. Identificación de dependencias backend
+
+No generar código incompleto o genérico. Todo debe estar alineado con la API y la rúbrica.

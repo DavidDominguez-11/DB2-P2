@@ -1,0 +1,977 @@
+# ParaMetrix — Arquitectura Frontend Completa
+
+> Red social musical basada en Neo4j | Versión 1.0
+
+---
+
+## 1. STACK TECNOLÓGICO
+
+| Capa | Tecnología | Justificación |
+|------|-----------|---------------|
+| Framework | React 18 + TypeScript | Componentes reutilizables, tipado fuerte |
+| Estado servidor | TanStack Query (React Query) v5 | Cache, refetch, loading/error automático |
+| Estado UI | Zustand | Liviano, para sidebar, modales, historial |
+| HTTP Client | Axios | Interceptores, base URL, error handling |
+| Routing | React Router v6 | Rutas anidadas, lazy loading |
+| Estilos | Tailwind CSS + CSS Variables | Utilidades + tema consistente |
+| Formularios | React Hook Form + Zod | Validación declarativa y tipada |
+| Tablas | TanStack Table v8 | Paginación, filtros, sort reutilizable |
+| Gráficas | Recharts | Analytics charts |
+| Notificaciones | Sonner | Toast feedback |
+| Editor código | CodeMirror 6 | Cypher Console con syntax highlight |
+
+---
+
+## 2. ESTRUCTURA DE CARPETAS
+
+```
+src/
+├── api/                          # Capa de servicios HTTP
+│   ├── client.ts                 # Instancia axios + interceptores
+│   ├── endpoints.ts              # Constantes de todas las URLs
+│   ├── users.api.ts              # CRUD usuarios
+│   ├── songs.api.ts              # CRUD canciones
+│   ├── playlists.api.ts          # CRUD playlists
+│   ├── posts.api.ts              # CRUD posts
+│   ├── genres.api.ts             # CRUD géneros
+│   ├── interactions.api.ts       # Relaciones / interacciones
+│   ├── bulk.api.ts               # Bulk operations (nodos y relaciones)
+│   ├── analytics.api.ts          # Agregaciones y data science
+│   ├── nodes.api.ts              # /api/v1/nodes (multi-label) [EXT]
+│   └── cypher.api.ts             # /api/v1/cypher/query [EXT]
+│
+├── hooks/                        # Custom hooks (React Query)
+│   ├── useUsers.ts
+│   ├── useSongs.ts
+│   ├── usePlaylists.ts
+│   ├── usePosts.ts
+│   ├── useGenres.ts
+│   ├── useInteractions.ts
+│   ├── useBulk.ts
+│   ├── useAnalytics.ts
+│   ├── useNodes.ts
+│   └── useCypher.ts
+│
+├── store/                        # Estado global (Zustand)
+│   ├── uiStore.ts                # sidebar colapsado, tema, modal activo
+│   ├── graphStore.ts             # nodo seleccionado, rel seleccionada
+│   └── queryHistoryStore.ts      # historial queries Cypher
+│
+├── components/
+│   ├── common/                   # Componentes globales reutilizables
+│   │   ├── DataTable.tsx         # Tabla genérica con paginación
+│   │   ├── FilterBar.tsx         # Filtros dinámicos
+│   │   ├── Modal.tsx             # Modal base con Portal
+│   │   ├── ConfirmDialog.tsx     # Diálogo de confirmación destructiva
+│   │   ├── Toast.tsx             # Wrapper Sonner
+│   │   ├── LoadingSpinner.tsx
+│   │   ├── EmptyState.tsx
+│   │   ├── Badge.tsx             # Label/tag badge
+│   │   ├── StatCard.tsx          # Tarjeta de métrica
+│   │   └── JsonViewer.tsx        # Visualizar JSON de resultados
+│   │
+│   ├── layout/
+│   │   ├── AppShell.tsx          # Layout principal
+│   │   ├── Sidebar.tsx           # Navegación lateral
+│   │   ├── TopBar.tsx            # Header con búsqueda global
+│   │   └── PageHeader.tsx        # Título + acciones por página
+│   │
+│   ├── graph/                    # Componentes específicos de grafo
+│   │   ├── LabelSelector.tsx     # Multi-select de labels Neo4j
+│   │   ├── PropertyEditor.tsx    # Editor dinámico key-value
+│   │   ├── NodeSelector.tsx      # Selector de nodo por ID + tipo
+│   │   ├── RelTypeSelector.tsx   # Selector de tipo de relación
+│   │   └── NodeCard.tsx          # Tarjeta visual de nodo
+│   │
+│   └── analytics/
+│       ├── BarChartCard.tsx
+│       ├── PieChartCard.tsx
+│       └── RecommendationCard.tsx
+│
+├── pages/
+│   ├── Home/                     # Feed social
+│   │   ├── index.tsx
+│   │   ├── PostCard.tsx
+│   │   ├── CreatePostModal.tsx
+│   │   └── InteractionButtons.tsx
+│   │
+│   ├── Profile/                  # Perfil de usuario
+│   │   ├── index.tsx
+│   │   ├── ProfileHeader.tsx
+│   │   ├── ActivityFeed.tsx
+│   │   ├── FollowerList.tsx
+│   │   └── EditProfileModal.tsx
+│   │
+│   ├── Explore/                  # Exploración de contenido
+│   │   ├── index.tsx
+│   │   ├── SongGrid.tsx
+│   │   ├── SongDetailModal.tsx
+│   │   ├── GenreList.tsx
+│   │   └── UserSearchList.tsx
+│   │
+│   ├── Playlists/                # Gestión de playlists
+│   │   ├── index.tsx
+│   │   ├── PlaylistCard.tsx
+│   │   ├── PlaylistDetail.tsx
+│   │   ├── CreatePlaylistModal.tsx
+│   │   └── AddSongToPlaylistModal.tsx
+│   │
+│   ├── Analytics/                # Dashboard de data science
+│   │   ├── index.tsx
+│   │   ├── OverviewPanel.tsx
+│   │   ├── RecommendationsPanel.tsx
+│   │   ├── SimilarUsersPanel.tsx
+│   │   ├── InfluenceRanking.tsx
+│   │   └── GenreDistribution.tsx
+│   │
+│   └── GraphManager/             # Módulo principal Graph Manager
+│       ├── index.tsx             # Router de sub-módulos + tabs
+│       │
+│       ├── NodeBuilder/
+│       │   ├── index.tsx
+│       │   ├── LabelModeToggle.tsx   # Switch: single / multi-label
+│       │   ├── SingleLabelForm.tsx   # Formulario con endpoint de entidad
+│       │   ├── MultiLabelForm.tsx    # Formulario → POST /api/v1/nodes
+│       │   └── PropertyFieldArray.tsx # Mínimo 5 props dinámicas
+│       │
+│       ├── NodeExplorer/
+│       │   ├── index.tsx
+│       │   ├── SingleNodePanel.tsx   # GET /api/v1/{entity}/{id}
+│       │   ├── NodeListPanel.tsx     # GET con skip/limit/filtros
+│       │   └── AggregationPanel.tsx  # GET /api/v1/{entity}/aggregate
+│       │
+│       ├── PropertyManager/
+│       │   ├── index.tsx
+│       │   ├── SinglePropertyOps.tsx  # PATCH individual, DELETE props
+│       │   └── BulkPropertyOps.tsx    # /bulk/nodes, /bulk/nodes/properties
+│       │
+│       ├── RelationshipBuilder/
+│       │   ├── index.tsx
+│       │   ├── NodePicker.tsx         # Selector origen + destino
+│       │   └── RelPropertyForm.tsx    # Mínimo 3 propiedades
+│       │
+│       ├── RelationshipManager/
+│       │   ├── index.tsx
+│       │   ├── SingleRelOps.tsx       # PATCH / DELETE individual
+│       │   └── BulkRelOps.tsx         # /bulk/relationships/...
+│       │
+│       ├── DeletePanel/
+│       │   ├── index.tsx
+│       │   ├── DeleteNodeForm.tsx     # DELETE individual + bulk
+│       │   └── DeleteRelForm.tsx      # DELETE rel individual + bulk
+│       │
+│       └── CypherConsole/
+│           ├── index.tsx
+│           ├── QueryEditor.tsx        # CodeMirror con Cypher highlight
+│           ├── ResultsTable.tsx       # Tabla dinámica de resultados
+│           └── QueryHistory.tsx       # Panel historial persistido
+│
+├── types/
+│   ├── api.types.ts              # Interfaces de request/response
+│   ├── graph.types.ts            # Node, Relationship, Label types
+│   └── ui.types.ts               # Props de componentes
+│
+├── utils/
+│   ├── formatters.ts             # Fechas, duración, números
+│   ├── validators.ts             # Reglas Zod reutilizables
+│   └── cypherTemplates.ts        # 6 queries Cypher predefinidas
+│
+├── config/
+│   └── queryClient.ts            # TanStack Query config global
+│
+└── App.tsx                       # Router raíz + QueryClientProvider
+```
+
+---
+
+## 3. CAPA API — MAPEO COMPLETO DE ENDPOINTS
+
+### client.ts
+```typescript
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  headers: { 'Content-Type': 'application/json' }
+});
+// Interceptor: manejo global de errores, toast automático
+```
+
+### endpoints.ts — Todas las URLs disponibles
+
+```typescript
+export const EP = {
+  // ── USERS ──────────────────────────────────────────────
+  users:            '/api/v1/users/',
+  usersAggregate:   '/api/v1/users/aggregate',
+  user:             (id: string) => `/api/v1/users/${id}`,
+  userProperties:   (id: string) => `/api/v1/users/${id}/properties`,
+
+  // ── SONGS ──────────────────────────────────────────────
+  songs:            '/api/v1/songs/',
+  songsAggregate:   '/api/v1/songs/aggregate',
+  song:             (id: string) => `/api/v1/songs/${id}`,
+  songProperties:   (id: string) => `/api/v1/songs/${id}/properties`,
+
+  // ── PLAYLISTS ───────────────────────────────────────────
+  playlists:        '/api/v1/playlists/',
+  playlistsAgg:     '/api/v1/playlists/aggregate',
+  playlist:         (id: string) => `/api/v1/playlists/${id}`,
+  playlistProps:    (id: string) => `/api/v1/playlists/${id}/properties`,
+
+  // ── POSTS ───────────────────────────────────────────────
+  posts:            '/api/v1/posts/',
+  postsAgg:         '/api/v1/posts/aggregate',
+  post:             (id: string) => `/api/v1/posts/${id}`,
+  postProps:        (id: string) => `/api/v1/posts/${id}/properties`,
+
+  // ── GENRES ──────────────────────────────────────────────
+  genres:           '/api/v1/genres/',
+  genresAgg:        '/api/v1/genres/aggregate',
+  genre:            (id: string) => `/api/v1/genres/${id}`,
+  genreProps:       (id: string) => `/api/v1/genres/${id}/properties`,
+
+  // ── INTERACTIONS (RELATIONSHIPS) ────────────────────────
+  interactions:     '/api/v1/interactions/',
+  interaction:      (id: string) => `/api/v1/interactions/${id}`,
+  interactionProps: (id: string) => `/api/v1/interactions/${id}/properties`,
+
+  // ── BULK OPERATIONS ─────────────────────────────────────
+  bulkNodes:        '/api/v1/bulk/nodes',
+  bulkNodeProps:    '/api/v1/bulk/nodes/properties',
+  bulkRels:         '/api/v1/bulk/relationships',
+  bulkRelProps:     '/api/v1/bulk/relationships/properties',
+
+  // ── ANALYTICS ───────────────────────────────────────────
+  // (accedidos via aggregate de cada entidad)
+
+  // ── EXTENSIONES BACKEND ─────────────────────────────────
+  nodes:            '/api/v1/nodes',               // multi-label
+  nodeById:         (id: string) => `/api/v1/nodes/${id}`,
+  nodeLabels:       (id: string) => `/api/v1/nodes/${id}/labels`,
+  cypherQuery:      '/api/v1/cypher/query',
+} as const;
+```
+
+---
+
+## 4. PANTALLAS — DESCRIPCIÓN DETALLADA
+
+---
+
+### 4.1 HOME — Feed Social
+
+**Ruta:** `/`
+
+**Descripción:** Feed cronológico de posts de usuarios. Muestra interacciones sociales (likes, escuchas). Panel lateral con recomendaciones rápidas.
+
+**Componentes:**
+- `PostCard` — muestra caption, tipo, fecha, hashtags, privacidad
+- `CreatePostModal` — formulario validado con React Hook Form
+- `InteractionButtons` — botones Like / Share / Listen
+- Paginación infinite scroll con React Query `useInfiniteQuery`
+
+**Acciones → Endpoints:**
+
+| Acción | Método | Endpoint |
+|--------|--------|----------|
+| Cargar feed | GET | `/api/v1/posts/?skip=0&limit=25` |
+| Crear post | POST | `/api/v1/posts/` |
+| Editar post | PATCH | `/api/v1/posts/{post_id}` |
+| Eliminar post | DELETE | `/api/v1/posts/{post_id}` |
+| Like post (relación) | POST | `/api/v1/interactions/` |
+
+**Validaciones CreatePost:**
+- `post_id`: requerido, string único (generado con UUID en frontend)
+- `caption`: requerido, mínimo 10 caracteres
+- `fecha`: requerido, formato date ISO
+- `tipo`: requerido, enum [song, playlist, update, event]
+- `privacidad`: default "public"
+
+---
+
+### 4.2 PROFILE — Perfil de Usuario
+
+**Ruta:** `/profile/:userId`
+
+**Descripción:** Vista de perfil con información personal, estadísticas de actividad, seguidores y canciones escuchadas. Permite editar el propio perfil.
+
+**Componentes:**
+- `ProfileHeader` — avatar generado, username, email, premium badge
+- `ActivityFeed` — últimos posts del usuario
+- `FollowerList` — tabla de usuarios relacionados
+- `EditProfileModal` — PATCH usuario
+
+**Acciones → Endpoints:**
+
+| Acción | Método | Endpoint |
+|--------|--------|----------|
+| Obtener usuario | GET | `/api/v1/users/{user_id}` |
+| Editar perfil | PATCH | `/api/v1/users/{user_id}` |
+| Posts del usuario | GET | `/api/v1/posts/?user_id=...` |
+| Seguidores (relaciones) | GET | `/api/v1/interactions/?to_id=...&rel_type=FOLLOWS` |
+| Canciones escuchadas | GET | `/api/v1/interactions/?from_id=...&rel_type=LISTENED` |
+
+---
+
+### 4.3 EXPLORE — Exploración
+
+**Ruta:** `/explore`
+
+**Descripción:** Buscador y explorador de canciones, géneros y usuarios. Tabs por entidad. Paginación real con skip/limit.
+
+**Tabs:**
+- 🎵 Canciones → `SongGrid` 
+- 🎸 Géneros → `GenreList`
+- 👤 Usuarios → `UserSearchList`
+
+**Acciones → Endpoints:**
+
+| Acción | Método | Endpoint |
+|--------|--------|----------|
+| Listar canciones | GET | `/api/v1/songs/?skip=N&limit=25` |
+| Detalle canción | GET | `/api/v1/songs/{song_id}` |
+| Listar géneros | GET | `/api/v1/genres/?skip=N&limit=25` |
+| Listar usuarios | GET | `/api/v1/users/?skip=N&limit=25` |
+| Filtrar premium | GET | `/api/v1/users/?premium=true` |
+
+---
+
+### 4.4 PLAYLISTS — Gestión
+
+**Ruta:** `/playlists`
+
+**Descripción:** CRUD completo de playlists. Vista de detalle con canciones asociadas. Botón para agregar canciones via relación.
+
+**Acciones → Endpoints:**
+
+| Acción | Método | Endpoint |
+|--------|--------|----------|
+| Listar playlists | GET | `/api/v1/playlists/` |
+| Crear playlist | POST | `/api/v1/playlists/` |
+| Editar playlist | PATCH | `/api/v1/playlists/{playlist_id}` |
+| Eliminar playlist | DELETE | `/api/v1/playlists/{playlist_id}` |
+| Añadir canción (rel) | POST | `/api/v1/interactions/` (CONTAINS) |
+
+**Validaciones CreatePlaylist:**
+- `playlist_id`, `nombre`, `descripcion`, `fecha_creacion`: requeridos
+- `nombre`: min 3, max 100 caracteres
+- `fecha_creacion`: formato date
+
+---
+
+### 4.5 ANALYTICS — Dashboard
+
+**Ruta:** `/analytics`
+
+**Descripción:** Dashboard de data science con métricas, recomendaciones y visualizaciones de grafos.
+
+**Sub-paneles:**
+
+#### OverviewPanel
+- Stats cards: total usuarios, canciones, playlists, géneros
+- Fuente: agregaciones COUNT de cada entidad
+
+#### RecommendationsPanel
+- Recomendaciones de canciones basadas en Jaccard similarity
+- ⚠️ **BACKEND REQUERIDO:** `GET /api/v1/analytics/recommendations/{user_id}`
+  - Lógica: usuarios con gustos similares → canciones no escuchadas
+
+#### SimilarUsersPanel
+- Usuarios con géneros favoritos en común
+- ⚠️ **BACKEND REQUERIDO:** `GET /api/v1/analytics/similar-users/{user_id}`
+
+#### InfluenceRanking
+- Top usuarios por número de seguidores
+- **Implementado via Cypher Console:**
+  ```cypher
+  MATCH (u:User)<-[:FOLLOWS]-(f) 
+  RETURN u.username, count(f) as seguidores 
+  ORDER BY seguidores DESC LIMIT 10
+  ```
+
+#### GenreDistribution
+- Distribución de géneros por popularidad
+- Fuente: `GET /api/v1/genres/aggregate?group_by=nombre&agg_field=popularidad&agg_func=sum`
+
+**Acciones → Endpoints:**
+
+| Acción | Método | Endpoint |
+|--------|--------|----------|
+| Agg usuarios | GET | `/api/v1/users/aggregate?group_by=premium&agg_func=count` |
+| Agg canciones | GET | `/api/v1/songs/aggregate?group_by=popularidad&agg_func=avg` |
+| Agg géneros | GET | `/api/v1/genres/aggregate?group_by=nombre&agg_field=popularidad&agg_func=sum` |
+| Agg playlists | GET | `/api/v1/playlists/aggregate` |
+
+---
+
+## 5. MÓDULO GRAPH MANAGER — Diseño Detallado
+
+**Ruta base:** `/graph-manager`
+
+**Navegación interna:** Tabs laterales entre sub-módulos
+
+---
+
+### 5.1 NODE BUILDER
+
+**Ruta:** `/graph-manager/node-builder`
+
+**Descripción:** Formulario para crear nodos en Neo4j. Soporta modo single-label (endpoints de entidad) y modo multi-label (endpoint `/api/v1/nodes`).
+
+#### Toggle: Single Label vs Multi-Label
+
+```
+[Single Label ●────] [Multi Label ────●]
+```
+
+#### Modo Single Label
+
+Selector de entidad: User | Song | Playlist | Post | Genre
+
+Formulario para **User** (mínimo 5 propiedades):
+- `user_id` — string, requerido, único
+- `username` — string, requerido, min 3
+- `email` — string, formato email, requerido
+- `fecha_registro` — date, requerido
+- `premium` — boolean, default false
+- `generos_favoritos` — array de strings
+- `is_artist` — boolean, default false
+
+→ `POST /api/v1/users/`
+
+Formulario para **Song** (mínimo 5 propiedades):
+- `song_id`, `titulo`, `duracion`, `fecha_lanzamiento`, `popularidad`, `idiomas`
+
+→ `POST /api/v1/songs/`
+
+Formulario para **Genre** (mínimo 5 propiedades):
+- `genre_id`, `nombre`, `descripcion`, `popularidad`, `origen`, `activo`
+
+→ `POST /api/v1/genres/`
+
+Formulario para **Playlist** (mínimo 5 propiedades):
+- `playlist_id`, `nombre`, `descripcion`, `fecha_creacion`, `publica`, `numero_canciones`, `is_featured`
+
+→ `POST /api/v1/playlists/`
+
+Formulario para **Post** (mínimo 5 propiedades):
+- `post_id`, `caption`, `fecha`, `tipo`, `privacidad`, `hashtags`, `is_ad`
+
+→ `POST /api/v1/posts/`
+
+#### Modo Multi-Label
+
+Labels selector (checkboxes múltiples):
+```
+☑ User   ☑ Artist   ☐ Influencer   ☐ Moderator   ☐ Label
+```
+
+Sección de propiedades dinámica:
+- Campo key-value dinámico (useFieldArray)
+- Botón "+ Agregar propiedad"
+- Mínimo 5 propiedades requeridas (validación Zod)
+- Tipos soportados: string, number, boolean, date
+
+→ `POST /api/v1/nodes` con body `{ labels: [...], properties: {...} }`
+
+**Extensión labels:**
+- `PATCH /api/v1/nodes/{id}/labels` para agregar/quitar labels post-creación
+- `GET /api/v1/nodes/{id}/labels` para ver labels actuales
+
+**Validaciones:**
+- ✔ Mínimo 1 label seleccionado
+- ✔ Mínimo 5 propiedades en modo multi-label
+- ✔ Keys de propiedades sin espacios, sin caracteres especiales
+- ✔ ID único requerido en todos los modos
+
+---
+
+### 5.2 NODE EXPLORER
+
+**Ruta:** `/graph-manager/node-explorer`
+
+**Descripción:** Consulta de nodos individuales o en masa. Incluye panel de agregaciones.
+
+#### Tab: Nodo Individual
+- Input: Tipo de entidad (selector) + ID
+- Botón "Consultar"
+- Resultado: `NodeCard` con todas las propiedades
+- → `GET /api/v1/{entity}/{id}`
+
+#### Tab: Múltiples Nodos
+- Selector de entidad
+- Controles de paginación (skip/limit)
+- Filtros disponibles: `premium` (users)
+- Tabla con columnas dinámicas según entidad
+- → `GET /api/v1/{entity}/?skip=N&limit=M`
+
+#### Tab: Agregaciones
+Formulario:
+- Entidad: User | Song | Playlist | Post | Genre
+- `group_by`: campo por el que agrupar
+- `agg_field`: campo a agregar
+- `agg_func`: count | avg | sum | min | max
+
+Resultado: tabla + bar chart
+
+→ `GET /api/v1/{entity}/aggregate?group_by=X&agg_field=Y&agg_func=Z`
+
+**Endpoints:**
+```
+GET /api/v1/users/aggregate
+GET /api/v1/songs/aggregate
+GET /api/v1/playlists/aggregate
+GET /api/v1/posts/aggregate
+GET /api/v1/genres/aggregate
+```
+
+---
+
+### 5.3 PROPERTY MANAGER
+
+**Ruta:** `/graph-manager/property-manager`
+
+**Descripción:** Actualización y eliminación de propiedades de nodos, tanto individual como masivamente.
+
+#### Tab: Operaciones Individuales
+
+Modo **Actualizar propiedad:**
+- Selector entidad + ID
+- Campo: nombre de propiedad
+- Nuevo valor
+- → `PATCH /api/v1/{entity}/{id}` con body `{ campo: valor }`
+
+Modo **Eliminar propiedades:**
+- Selector entidad + ID
+- Multi-select de propiedades a eliminar
+- → `DELETE /api/v1/{entity}/{id}/properties?properties=prop1&properties=prop2`
+
+#### Tab: Operaciones Masivas
+
+**Bulk Update Nodos:**
+```json
+{
+  "label": "User",
+  "filter_property": "premium",
+  "filter_value": false,
+  "update_data": { "is_new_user": true }
+}
+```
+→ `PATCH /api/v1/bulk/nodes`
+
+**Bulk Remove Property de Nodos:**
+```json
+{
+  "label": "Song",
+  "property_to_remove": "temp_field",
+  "filter_property": "popularidad",
+  "filter_value": 0
+}
+```
+→ `DELETE /api/v1/bulk/nodes/properties`
+
+---
+
+### 5.4 RELATIONSHIP BUILDER
+
+**Ruta:** `/graph-manager/relationship-builder`
+
+**Descripción:** Creación de relaciones entre dos nodos. Selector visual de origen y destino. Mínimo 3 propiedades de relación.
+
+**Campos del formulario:**
+- Nodo origen: label + ID (selector con búsqueda)
+- Nodo destino: label + ID (selector con búsqueda)
+- Tipo de relación: LISTENED | FOLLOWS | LIKED | CONTAINS | POSTED | etc.
+- Propiedades (mínimo 3, campo dinámico):
+  - Ejemplos: `fecha`, `duracion_escucha`, `plataforma`, `dispositivo`, `contexto`
+
+→ `POST /api/v1/interactions/`
+
+**Body:**
+```json
+{
+  "from_label": "User",
+  "from_id": "user-123",
+  "to_label": "Song",
+  "to_id": "song-456",
+  "rel_type": "LISTENED",
+  "properties": {
+    "fecha": "2024-01-15",
+    "duracion_escucha": 245,
+    "plataforma": "web"
+  }
+}
+```
+
+**Validaciones:**
+- ✔ Origen y destino no pueden ser el mismo ID
+- ✔ Mínimo 3 propiedades en la relación
+- ✔ `rel_type` no puede estar vacío
+- ✔ IDs de nodos deben existir (verificación opcional via GET)
+
+**Tipos de relación disponibles (predefinidos + campo libre):**
+```
+LISTENED | FOLLOWS | LIKED | CONTAINS | POSTED | 
+BELONGS_TO | FEATURED_IN | COLLABORATED_WITH
+```
+
+---
+
+### 5.5 RELATIONSHIP MANAGER
+
+**Ruta:** `/graph-manager/relationship-manager`
+
+**Descripción:** Editar y eliminar relaciones, individual y masivamente.
+
+#### Tab: Operaciones Individuales
+
+**Editar relación:**
+- Input: ID de interacción
+- `GET /api/v1/interactions/{id}` para obtener propiedades actuales
+- Formulario editable
+- → `PATCH /api/v1/interactions/{id}` con `{ properties: {...} }`
+
+**Eliminar propiedades de relación:**
+- Input: ID de interacción
+- Multi-select de propiedades
+- → `DELETE /api/v1/interactions/{id}/properties` con `{ property_names: [...] }`
+
+**Eliminar relación:**
+- Input: ID de interacción
+- Confirmación
+- → `DELETE /api/v1/interactions/{id}`
+
+#### Tab: Operaciones Masivas
+
+**Bulk Update Relaciones:**
+```json
+{
+  "rel_type": "LISTENED",
+  "filter_property": "plataforma",
+  "filter_value": "mobile",
+  "update_data": { "migrated": true }
+}
+```
+→ `PATCH /api/v1/bulk/relationships`
+
+**Bulk Delete Relaciones:**
+```json
+{
+  "rel_type": "LISTENED",
+  "filter_property": "fecha",
+  "filter_value": "2020-01-01"
+}
+```
+→ `DELETE /api/v1/bulk/relationships`
+
+**Bulk Remove Property de Relaciones:**
+```json
+{
+  "rel_type": "FOLLOWS",
+  "property_to_remove": "temp_field"
+}
+```
+→ `DELETE /api/v1/bulk/relationships/properties`
+
+---
+
+### 5.6 DELETE PANEL
+
+**Ruta:** `/graph-manager/delete-panel`
+
+**Descripción:** Panel centralizado de eliminación con confirmación obligatoria. UI de alto contraste para evitar eliminaciones accidentales.
+
+#### Eliminar Nodo Individual
+- Selector de entidad + ID
+- Vista previa del nodo (GET antes de DELETE)
+- Confirmación: escribir el ID para confirmar
+- → `DELETE /api/v1/{entity}/{id}`
+
+#### Eliminar Múltiples Nodos (Bulk)
+- Selector de label
+- Filtro por propiedad + valor
+- Preview del conteo afectado (via query previa)
+- Confirmación con checkbox
+- → `DELETE /api/v1/bulk/nodes`
+
+**Body Bulk Delete Nodos:**
+```json
+{
+  "label": "Post",
+  "filter_property": "is_ad",
+  "filter_value": true
+}
+```
+
+#### Eliminar Relación Individual
+- Input: ID de interacción
+- → `DELETE /api/v1/interactions/{id}`
+
+#### Eliminar Múltiples Relaciones (Bulk)
+- Tipo de relación + filtro
+- → `DELETE /api/v1/bulk/relationships`
+
+**UI de seguridad:**
+- Fondo rojo para operaciones destructivas
+- Doble confirmación (modal + checkbox)
+- Indicador de "Operación irreversible"
+
+---
+
+### 5.7 CYPHER CONSOLE
+
+**Ruta:** `/graph-manager/cypher-console`
+
+**Descripción:** Terminal interactiva para ejecutar consultas Cypher directamente contra Neo4j via API.
+
+**Layout:**
+```
+┌─────────────────────────────────┬──────────────────┐
+│  Editor (CodeMirror)            │  Historial        │
+│  MATCH (n:User)                 │  > Query 1        │
+│  RETURN n LIMIT 10              │  > Query 2        │
+│                    [Ejecutar ▶] │  > Query 3        │
+├─────────────────────────────────┴──────────────────┤
+│  Resultados                                         │
+│  ┌──────┬──────────┬───────────┬──────────────┐    │
+│  │ id   │ username │ email     │ premium      │    │
+│  ├──────┼──────────┼───────────┼──────────────┤    │
+│  │ u1   │ juanito  │ j@m.com   │ false        │    │
+└─────────────────────────────────────────────────────┘
+```
+
+**Endpoint usado:**
+→ `POST /api/v1/cypher/query` con `{ "query": "..." }`
+
+**Queries predefinidas (Templates):**
+
+```cypher
+-- Query 1: Usuarios más activos
+MATCH (u:User)-[r:LISTENED]->()
+RETURN u.username, count(r) as escuchas
+ORDER BY escuchas DESC LIMIT 10
+
+-- Query 2: Canciones más populares
+MATCH (s:Song)<-[:LISTENED]-(u:User)
+RETURN s.titulo, count(u) as oyentes
+ORDER BY oyentes DESC LIMIT 10
+
+-- Query 3: Ranking de influencia (seguidores)
+MATCH (u:User)<-[:FOLLOWS]-(f:User)
+RETURN u.username, count(f) as seguidores
+ORDER BY seguidores DESC LIMIT 10
+
+-- Query 4: Usuarios con géneros en común
+MATCH (u1:User)-[:LIKED]->(g:Genre)<-[:LIKED]-(u2:User)
+WHERE u1 <> u2
+RETURN u1.username, u2.username, collect(g.nombre) as generos_comunes
+LIMIT 20
+
+-- Query 5: Playlists con más canciones
+MATCH (p:Playlist)-[:CONTAINS]->(s:Song)
+RETURN p.nombre, count(s) as total_canciones
+ORDER BY total_canciones DESC LIMIT 10
+
+-- Query 6: Nodos aislados (sin relaciones)
+MATCH (n)
+WHERE NOT (n)--()
+RETURN labels(n), n LIMIT 20
+```
+
+**Funcionalidades:**
+- Historial persistido en Zustand + localStorage
+- Botón "Copiar query"
+- Botón "Cargar template"
+- Exportar resultados como CSV
+- Manejo de errores Cypher (mensaje legible)
+- Límite de 1000 resultados en frontend para performance
+
+---
+
+## 6. ESTADO GLOBAL (ZUSTAND)
+
+### uiStore.ts
+```typescript
+interface UIStore {
+  sidebarCollapsed: boolean;
+  activeModal: string | null;
+  theme: 'dark' | 'light';
+  setSidebarCollapsed: (v: boolean) => void;
+  openModal: (id: string) => void;
+  closeModal: () => void;
+}
+```
+
+### graphStore.ts
+```typescript
+interface GraphStore {
+  selectedNodeId: string | null;
+  selectedNodeType: string | null;
+  selectedRelId: string | null;
+  setSelectedNode: (id: string, type: string) => void;
+  setSelectedRel: (id: string) => void;
+  clearSelection: () => void;
+}
+```
+
+### queryHistoryStore.ts
+```typescript
+interface QueryHistoryStore {
+  history: { query: string; timestamp: Date; success: boolean }[];
+  addQuery: (q: string, success: boolean) => void;
+  clearHistory: () => void;
+}
+// Persistido con zustand/middleware persist → localStorage
+```
+
+---
+
+## 7. FLUJO DE NAVEGACIÓN
+
+```
+App
+├── / (Home - Feed)
+├── /profile/:userId (Perfil)
+├── /explore (Explorar)
+│   ├── ?tab=songs
+│   ├── ?tab=genres
+│   └── ?tab=users
+├── /playlists (Playlists)
+│   └── /playlists/:playlistId (Detalle)
+├── /analytics (Dashboard Analytics)
+│   ├── ?panel=overview
+│   ├── ?panel=recommendations
+│   ├── ?panel=similar-users
+│   ├── ?panel=influence
+│   └── ?panel=genres
+└── /graph-manager (Graph Manager)
+    ├── /graph-manager/node-builder
+    ├── /graph-manager/node-explorer
+    ├── /graph-manager/property-manager
+    ├── /graph-manager/relationship-builder
+    ├── /graph-manager/relationship-manager
+    ├── /graph-manager/delete-panel
+    └── /graph-manager/cypher-console
+```
+
+---
+
+## 8. VALIDACIONES POR REQUISITO DE RÚBRICA
+
+| Requisito | Implementación | Endpoint |
+|-----------|---------------|----------|
+| ✔ Crear nodo con 1 label | `NodeBuilder` modo Single → formulario por entidad | `POST /api/v1/{entity}/` |
+| ✔ Crear nodo con múltiples labels | `NodeBuilder` modo Multi → `MultiLabelForm` | `POST /api/v1/nodes` |
+| ✔ Crear nodos con mínimo 5 props | Validación Zod en ambos modos | Todos los Create |
+| ✔ Consultar 1 nodo | `NodeExplorer` Tab Individual | `GET /api/v1/{entity}/{id}` |
+| ✔ Consultar múltiples nodos | `NodeExplorer` Tab Lista | `GET /api/v1/{entity}/` |
+| ✔ Realizar agregaciones | `NodeExplorer` Tab Agregaciones | `GET /api/v1/{entity}/aggregate` |
+| ✔ Gestionar props individual | `PropertyManager` Tab Individual | `PATCH` + `DELETE /properties` |
+| ✔ Gestionar props masivo | `PropertyManager` Tab Bulk | `PATCH /bulk/nodes`, `DELETE /bulk/nodes/properties` |
+| ✔ Crear relaciones con ≥3 props | `RelationshipBuilder` con validación Zod | `POST /api/v1/interactions/` |
+| ✔ Gestionar rels individual | `RelationshipManager` Tab Individual | `PATCH`, `DELETE /interactions/{id}` |
+| ✔ Gestionar rels masivo | `RelationshipManager` Tab Bulk | `PATCH /bulk/relationships`, `DELETE /bulk/relationships` |
+| ✔ Eliminar nodos individual | `DeletePanel` → Nodo Individual | `DELETE /api/v1/{entity}/{id}` |
+| ✔ Eliminar nodos masivo | `DeletePanel` → Bulk Nodos | `DELETE /api/v1/bulk/nodes` |
+| ✔ Eliminar rels individual | `DeletePanel` → Rel Individual | `DELETE /api/v1/interactions/{id}` |
+| ✔ Eliminar rels masivo | `DeletePanel` → Bulk Rels | `DELETE /api/v1/bulk/relationships` |
+| ✔ Ejecutar Cypher real | `CypherConsole` | `POST /api/v1/cypher/query` |
+| ✔ Data science / Analytics | `Analytics Dashboard` + Cypher | Aggregate endpoints + Cypher |
+
+---
+
+## 9. DEPENDENCIAS BACKEND (PENDIENTES)
+
+Las siguientes funcionalidades requieren implementación backend adicional:
+
+| Funcionalidad | Endpoint Propuesto | Descripción |
+|---------------|-------------------|-------------|
+| Recomendaciones Jaccard | `GET /api/v1/analytics/recommendations/{user_id}` | Usuarios similares → canciones no escuchadas |
+| Usuarios similares | `GET /api/v1/analytics/similar-users/{user_id}` | Basado en géneros compartidos |
+| Multi-label nodes | `POST /api/v1/nodes` | Crear nodos con múltiples labels |
+| Labels de nodo | `GET /api/v1/nodes/{id}/labels` | Obtener labels de un nodo |
+| Modificar labels | `PATCH /api/v1/nodes/{id}/labels` | Add/remove labels |
+| Ejecutar Cypher | `POST /api/v1/cypher/query` | Query Cypher arbitraria |
+| Filtros de interacciones | `GET /api/v1/interactions/?rel_type=X&from_id=Y` | Filtrar por tipo y nodo |
+
+> **Nota:** Los endpoints de extensión (nodes, cypher) están declarados como disponibles en el diseño pero requieren implementación en el backend FastAPI + Neo4j.
+
+---
+
+## 10. PATRONES DE MANEJO DE ESTADO (REACT QUERY)
+
+### Ejemplo: Hook de Usuarios
+```typescript
+// hooks/useUsers.ts
+export const useUsers = (params: UserListParams) =>
+  useQuery({
+    queryKey: ['users', params],
+    queryFn: () => usersApi.list(params),
+    staleTime: 1000 * 60 * 5,
+  });
+
+export const useCreateUser = () =>
+  useMutation({
+    mutationFn: usersApi.create,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+      toast.success('Usuario creado exitosamente');
+    },
+    onError: (e: AxiosError) => toast.error(e.message),
+  });
+```
+
+### Patrón de Optimistic Updates (para operaciones frecuentes)
+```typescript
+export const useDeleteNode = (entity: string) =>
+  useMutation({
+    mutationFn: (id: string) => entityApi(entity).delete(id),
+    onMutate: async (id) => {
+      await queryClient.cancelQueries({ queryKey: [entity] });
+      const prev = queryClient.getQueryData([entity]);
+      queryClient.setQueryData([entity], (old: any[]) =>
+        old.filter(n => n.id !== id)
+      );
+      return { prev };
+    },
+    onError: (_err, _id, ctx) => {
+      queryClient.setQueryData([entity], ctx?.prev);
+    },
+  });
+```
+
+---
+
+## 11. SISTEMA DE DISEÑO
+
+### Paleta de Colores
+```css
+:root {
+  --bg-primary: #090910;
+  --bg-secondary: #111118;
+  --bg-card: #16161F;
+  --border: #252535;
+  --accent-primary: #7C6FFF;      /* Violeta eléctrico */
+  --accent-secondary: #00E5CC;    /* Cyan neo */
+  --accent-danger: #FF4455;
+  --accent-success: #22D3A0;
+  --text-primary: #F0F0FF;
+  --text-secondary: #8888AA;
+  --text-muted: #44445A;
+}
+```
+
+### Tipografía
+- Display: `Syne` (headings, labels Graph Manager)
+- Body: `DM Sans` (texto general, forms)
+- Monospace: `DM Mono` (Cypher Console, IDs, JSON)
+
+### Componentes Base
+- Botones: Primary (violeta), Secondary (ghost), Danger (rojo), Ghost
+- Inputs: Borde sutil, focus ring violeta
+- Tablas: Striped, hover highlight, sortable headers
+- Badges: Node labels como pills de color
+- Cards: bg-card, border sutil, hover lift
+
+---
+
+*Fin del documento de arquitectura — ParaMetrix v1.0*
