@@ -139,6 +139,25 @@ async def aggregate_posts(
 
 # ── Rutas con parámetros ──────────────────────────────────────────────────────
 
+@router.get("/{post_id}/comments")
+async def get_post_comments(post_id: str, db: AsyncSession = Depends(get_db)):
+    """Comentarios de un post: relación (User)-[:COMMENTED]->(Post)."""
+    query = """
+    MATCH (u:User)-[c:COMMENTED]->(p:Post)
+    WHERE toString(p.post_id) = toString($pid)
+    RETURN elementId(c)  AS rel_id,
+           c.contenido   AS contenido,
+           c.fecha       AS fecha,
+           c.likes       AS likes,
+           u.username    AS autor,
+           u.user_id     AS autor_id
+    ORDER BY c.fecha DESC
+    """
+    result = await db.run(query, pid=post_id)
+    rows = [_row(r) async for r in result]
+    return {"post_id": post_id, "comments": rows}
+
+
 @router.get("/{post_id}")
 async def get_post(post_id: str, db: AsyncSession = Depends(get_db)):
     result = await get_node_with_connections(db, "Post", post_id)

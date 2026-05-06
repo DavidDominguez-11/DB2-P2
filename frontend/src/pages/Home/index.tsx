@@ -6,14 +6,29 @@ import LoadingSpinner from '../../components/common/LoadingSpinner'
 import EmptyState from '../../components/common/EmptyState'
 import PostCard from './PostCard'
 import CreatePostModal from './CreatePostModal'
+import PostComments from './PostComments'
 import { postsApi } from '../../api/posts.api'
 
 type Tab = 'all' | 'follows'
+interface PostLike { post_id: string; caption?: string }
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false)
   const [tab, setTab] = useState<Tab>('all')
+  const [selectedPost, setSelectedPost] = useState<PostLike | null>(null)
   const qc = useQueryClient()
+
+  // User ID activo: sirve para likes Y para el tab Siguiendo
+  const [myUserId, setMyUserId] = useState(() => localStorage.getItem('my_user_id') ?? '')
+  const [myUserInput, setMyUserInput] = useState(() => localStorage.getItem('my_user_id') ?? '')
+
+  const saveMyUser = (e: React.FormEvent) => {
+    e.preventDefault()
+    const val = myUserInput.trim()
+    setMyUserId(val)
+    localStorage.setItem('my_user_id', val)
+    toast.success(val ? `Sesión como usuario ${val}` : 'Sesión cerrada')
+  }
 
   // Tab "Todos" — filtro por user_id opcional
   const [userInput, setUserInput] = useState('')
@@ -21,20 +36,17 @@ export default function Home() {
   const [skip, setSkip] = useState(0)
   const limit = 15
 
-  // Tab "Siguiendo" — posts de follows de un user_id
-  const [followsInput, setFollowsInput] = useState('')
-  const [activeFollows, setActiveFollows] = useState('')
-
   const allFeed = useQuery({
     queryKey: ['feed-all', activeUser, skip],
     queryFn: () => postsApi.feed({ skip, limit, ...(activeUser ? { user_id: activeUser } : {}) }),
     enabled: tab === 'all',
   })
 
+  // Tab "Siguiendo" — usa myUserId directamente
   const followsFeed = useQuery({
-    queryKey: ['feed-follows', activeFollows],
-    queryFn: () => postsApi.followsFeed(activeFollows),
-    enabled: tab === 'follows' && !!activeFollows,
+    queryKey: ['feed-follows', myUserId],
+    queryFn: () => postsApi.followsFeed(myUserId),
+    enabled: tab === 'follows' && !!myUserId,
   })
 
   const deletePost = useMutation({
@@ -48,22 +60,13 @@ export default function Home() {
 
   const isLoading = tab === 'all' ? allFeed.isLoading : followsFeed.isLoading
   const posts: Record<string, unknown>[] =
-    tab === 'all'
-      ? (allFeed.data?.posts ?? [])
-      : (followsFeed.data?.posts ?? [])
+    tab === 'all' ? (allFeed.data?.posts ?? []) : (followsFeed.data?.posts ?? [])
 
   const handleUserSearch = (e: React.FormEvent) => {
     e.preventDefault()
     setActiveUser(userInput.trim())
     setSkip(0)
   }
-
-  const handleFollowsSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    setActiveFollows(followsInput.trim())
-  }
-
-  const inputCls = 'flex-1 bg-[#16161F] border border-[#252535] rounded-lg px-4 py-2 text-sm text-[#F0F0FF] placeholder-[#44445A] focus:outline-none focus:border-[#7C6FFF] transition-colors'
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -79,6 +82,29 @@ export default function Home() {
           </button>
         }
       />
+
+      {/* Mi usuario activo — controla likes y tab Siguiendo */}
+      <form
+        onSubmit={saveMyUser}
+        className="flex gap-2 mb-4 bg-[#111118] border border-[#252535] rounded-xl p-3 items-center"
+      >
+        <span className="text-xs text-[#8888AA] shrink-0">👤 Mi User ID:</span>
+        <input
+          value={myUserInput}
+          onChange={(e) => setMyUserInput(e.target.value)}
+          placeholder="Tu ID — para likes y ver Siguiendo..."
+          className="flex-1 bg-[#090910] border border-[#252535] rounded-lg px-3 py-1.5 text-sm text-[#F0F0FF] placeholder-[#44445A] focus:outline-none focus:border-[#7C6FFF] transition-colors"
+        />
+        <button
+          type="submit"
+          className="px-3 py-1.5 bg-[#7C6FFF] hover:bg-violet-500 text-white text-xs rounded-lg transition-colors shrink-0"
+        >
+          {myUserId ? 'Cambiar' : 'Entrar'}
+        </button>
+        {myUserId && (
+          <span className="text-xs text-[#22D3A0] font-mono shrink-0">✓ {myUserId}</span>
+        )}
+      </form>
 
       {/* Tabs */}
       <div className="flex gap-1 mb-4 bg-[#111118] border border-[#252535] rounded-lg p-1 w-fit">
@@ -96,11 +122,11 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Buscador según tab activo */}
+      {/* Buscador solo en tab Todos */}
       {tab === 'all' && (
         <form onSubmit={handleUserSearch} className="flex gap-2 mb-4">
           <div className="relative flex-1">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8888AA] text-sm">👤</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8888AA] text-sm">🔍</span>
             <input
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
@@ -123,30 +149,7 @@ export default function Home() {
         </form>
       )}
 
-      {tab === 'follows' && (
-        <form onSubmit={handleFollowsSearch} className="flex gap-2 mb-4">
-          <input
-            value={followsInput}
-            onChange={(e) => setFollowsInput(e.target.value)}
-            placeholder="User ID — ver posts de usuarios que sigue..."
-            className={inputCls}
-          />
-          <button type="submit" className="px-4 py-2 bg-[#7C6FFF] hover:bg-violet-500 text-white text-sm rounded-lg transition-colors">
-            Buscar
-          </button>
-          {activeFollows && (
-            <button
-              type="button"
-              onClick={() => { setFollowsInput(''); setActiveFollows('') }}
-              className="px-3 py-2 border border-[#252535] rounded-lg text-[#8888AA] hover:text-[#F0F0FF] text-sm transition-colors"
-            >
-              ✕
-            </button>
-          )}
-        </form>
-      )}
-
-      {/* Badge de contexto activo */}
+      {/* Badges de contexto */}
       {tab === 'all' && activeUser && (
         <p className="text-xs text-[#8888AA] mb-3">
           Posts de{' '}
@@ -154,10 +157,10 @@ export default function Home() {
           {' '}· {posts.length} resultado{posts.length !== 1 ? 's' : ''}
         </p>
       )}
-      {tab === 'follows' && activeFollows && (
+      {tab === 'follows' && myUserId && !isLoading && (
         <p className="text-xs text-[#8888AA] mb-3">
           Posts de usuarios seguidos por{' '}
-          <span className="font-mono text-[#7C6FFF] bg-[#7C6FFF]/10 px-2 py-0.5 rounded-full">{activeFollows}</span>
+          <span className="font-mono text-[#7C6FFF] bg-[#7C6FFF]/10 px-2 py-0.5 rounded-full">{myUserId}</span>
           {' '}· {posts.length} resultado{posts.length !== 1 ? 's' : ''}
         </p>
       )}
@@ -165,15 +168,15 @@ export default function Home() {
       {/* Lista de posts */}
       {isLoading ? (
         <LoadingSpinner className="py-12" />
-      ) : tab === 'follows' && !activeFollows ? (
+      ) : tab === 'follows' && !myUserId ? (
         <div className="bg-[#16161F] border border-[#252535] rounded-xl p-8 text-center text-[#8888AA] text-sm">
-          Ingresa un User ID para ver los posts de las personas que sigue
+          Ingresa tu User ID en el campo de arriba para ver los posts de las personas que sigues
         </div>
       ) : posts.length === 0 ? (
         <EmptyState
           message={
             tab === 'follows'
-              ? `El usuario "${activeFollows}" no sigue a nadie con posts`
+              ? `El usuario "${myUserId}" no sigue a nadie con posts`
               : activeUser
                 ? `No hay posts del usuario "${activeUser}"`
                 : 'No hay posts todavía'
@@ -186,13 +189,15 @@ export default function Home() {
             <PostCard
               key={post.post_id as string}
               post={post as unknown as import('../../types/api.types').Post}
+              myUserId={myUserId || undefined}
               onDelete={(id) => deletePost.mutate(id)}
+              onViewComments={(p) => setSelectedPost({ post_id: String(p.post_id), caption: String(p.caption ?? '') })}
             />
           ))}
         </div>
       )}
 
-      {/* Paginación solo en tab "Todos" */}
+      {/* Paginación solo en tab Todos */}
       {tab === 'all' && (
         <div className="flex items-center justify-between mt-4">
           <button
@@ -216,6 +221,12 @@ export default function Home() {
       )}
 
       <CreatePostModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <PostComments
+        postId={selectedPost?.post_id ?? null}
+        postCaption={selectedPost?.caption}
+        myUserId={myUserId || undefined}
+        onClose={() => setSelectedPost(null)}
+      />
     </div>
   )
 }
