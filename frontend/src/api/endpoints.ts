@@ -13,16 +13,24 @@ export const EP = {
   playlistsAgg:     '/api/v1/playlists/aggregate',
   playlist:         (id: string) => `/api/v1/playlists/${id}`,
   playlistProps:    (id: string) => `/api/v1/playlists/${id}/properties`,
+  playlistsByUser:  (userId: string) => `/api/v1/playlists/by-user/${userId}`,
+  playlistSongs:    (id: string) => `/api/v1/playlists/${id}/songs`,
 
   posts:            '/api/v1/posts/',
   postsAgg:         '/api/v1/posts/aggregate',
   post:             (id: string) => `/api/v1/posts/${id}`,
   postProps:        (id: string) => `/api/v1/posts/${id}/properties`,
+  postComments:     (id: string) => `/api/v1/posts/${id}/comments`,
 
   genres:           '/api/v1/genres/',
   genresAgg:        '/api/v1/genres/aggregate',
   genre:            (id: string) => `/api/v1/genres/${id}`,
   genreProps:       (id: string) => `/api/v1/genres/${id}/properties`,
+
+  artists:          '/api/v1/artists/',
+  artistsAgg:       '/api/v1/artists/aggregate',
+  artist:           (id: string) => `/api/v1/artists/${id}`,
+  artistProps:      (id: string) => `/api/v1/artists/${id}/properties`,
 
   interactions:     '/api/v1/interactions/',
   interaction:      (id: string) => `/api/v1/interactions/${id}`,
@@ -44,7 +52,10 @@ export const EP = {
   analyticsGenreDistribution: '/api/v1/analytics/genre-distribution',
   analyticsUserActivity: (id: string) => `/api/v1/analytics/user-activity/${id}`,
 
-  maintenanceStats: '/api/v1/bulk/maintenance/stats',
+  bulkCsv:                 (label: string) => `/api/v1/bulk/csv/${label}`,
+  maintenanceStats:        '/api/v1/bulk/maintenance/stats',
+  maintenanceConnectivity: '/api/v1/bulk/maintenance/connectivity',
+  maintenanceConstraints:  '/api/v1/bulk/maintenance/constraints',
 
   nodes:     '/api/v1/nodes',
   nodeById:  (id: string) => `/api/v1/nodes/${id}`,

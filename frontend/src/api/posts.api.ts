@@ -26,4 +26,7 @@ export const postsApi = {
 
   followsFeed: (userId: string, limit?: number) =>
     api.get(`${EP.posts}feed/follows/${userId}`, { params: { limit } }).then((r) => r.data),
+
+  comments: (postId: string) =>
+    api.get(EP.postComments(postId)).then((r) => r.data),
 }

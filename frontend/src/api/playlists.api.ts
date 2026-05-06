@@ -20,4 +20,10 @@ export const playlistsApi = {
 
   aggregate: (params: { group_by: string; agg_field?: string; agg_func?: string }) =>
     api.get(EP.playlistsAgg, { params }).then((r) => r.data),
+
+  byUser: (userId: string) =>
+    api.get(EP.playlistsByUser(userId)).then((r) => r.data),
+
+  songs: (id: string) =>
+    api.get(EP.playlistSongs(id)).then((r) => r.data),
 }

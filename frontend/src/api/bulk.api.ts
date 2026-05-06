@@ -23,4 +23,16 @@ export const bulkApi = {
   }) => api.delete(EP.bulkNodes, { data }).then((r) => r.data),
 
   maintenanceStats: () => api.get(EP.maintenanceStats).then((r) => r.data),
+
+  connectivity: () => api.get(EP.maintenanceConnectivity).then((r) => r.data),
+
+  initConstraints: () => api.post(EP.maintenanceConstraints).then((r) => r.data),
+
+  uploadCsv: (label: string, file: File) => {
+    const form = new FormData()
+    form.append('file', file)
+    return api.post(EP.bulkCsv(label), form, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    }).then((r) => r.data)
+  },
 }
