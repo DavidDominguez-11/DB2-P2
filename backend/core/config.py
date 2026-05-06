@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     NEO4J_DATABASE: str = "neo4j"
     AURA_INSTANCEID: Optional[str] = None
     AURA_INSTANCENAME: Optional[str] = None
-    FRONTEND_URL: str = "http://localhost:3000"
+    FRONTEND_URL: str = "http://localhost:5173"
 
     model_config = SettingsConfigDict(
         env_file=".env", 
